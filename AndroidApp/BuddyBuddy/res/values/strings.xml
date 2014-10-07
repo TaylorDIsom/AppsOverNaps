@@ -4,6 +4,9 @@
     <string name="app_name">BuddyBuddy</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="go_button">Go</string>
+    <string name="where_button">Where</string>
+    <string name="when_button">When</string>
     <string name="take_home_button">Take\nMe\nHome</string>
 
 </resources>
