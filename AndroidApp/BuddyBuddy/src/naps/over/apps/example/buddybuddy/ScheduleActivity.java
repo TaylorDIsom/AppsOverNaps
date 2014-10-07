@@ -60,11 +60,14 @@ public class ScheduleActivity extends Activity {
 		
 		//Create an array of strings of upcoming 20 minute intervals
 		for (int i = 0; i < timeSlots.length; i++) {
-			timeSlots[i] = currentHour + ":" + String.format("%02d", closestTime);
+			timeSlots[i] = String.format("%02d", currentHour) + ":" + String.format("%02d", closestTime);
 			closestTime += 20;
 			if (closestTime == 60) {
 				closestTime = 0;
 				currentHour++;
+			}
+			if (currentHour == 24) {
+				currentHour = 0;
 			}
 		}
 
