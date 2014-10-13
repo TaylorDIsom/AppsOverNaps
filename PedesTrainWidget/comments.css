@@ -1,0 +1,14 @@
+.comment_form{
+	width: 100%;
+}
+.comment_form textarea{
+	display: block;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+body {
+  padding-top: 20px;
+  background-color: #000000;
+}
+
