@@ -1,8 +1,22 @@
 <?php
 	include 'db_helper.php';
 	
+	function listFavorites() {
+		$dbQuery = sprintf("SELECT * FROM `favorites`");
+		$result = getDBResultsArray($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+
+	function listSchedule() {
+		$dbQuery = sprintf("SELECT * FROM `schedule`");
+		$result = getDBResultsArray($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+
 	function listUsers() {
-		$dbQuery = sprintf("SELECT User ID,First Name, Last Name FROM users");
+		$dbQuery = sprintf("SELECT `first_name` FROM `users`");
 		$result = getDBResultsArray($dbQuery);
 		header("Content-type: application/json");
 		echo json_encode($result);

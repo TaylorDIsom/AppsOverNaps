@@ -1,4 +1,5 @@
-console.log('RUNNING COMMENT JAVASCRIPT');
+console.log('RUNNING PEDESTRAIN JAVASCRIPT');
+console.log($('#home_page'));
 console.log($('#list_comments_page'));
 console.log($('#add_comment_page'));
 console.log($('#edit_comment_page'));
@@ -7,12 +8,20 @@ $(function() {
  // Handler for .ready() called.
 	console.log('ready');
 
+
+	//
+	$('#home_page').bind('pagebeforeshow', function() {
+		console.log("Home Page");
+		
+	});
+
 	//Bind to the create so the page gets updated with the listing
 	$('#list_comments_page').bind('pagebeforeshow',function(event, ui){
 		console.log('pagebeforeshow');
 	
 		//Remove the old rows
 		$( ".comment_list_row" ).remove();
+		$( ".user_list_row" ).remove();
 		
 		//JQuery Fetch The New Ones
 		$.ajax({
@@ -26,8 +35,22 @@ $(function() {
 	        },
 	        error: ajaxError
 		});
+
+		//JQuery Fetch The New Ones
+		$.ajax({
+			url: "api/users",
+			dataType: "json",
+	        async: false,
+	        success: function(data, textStatus, jqXHR) {
+				console.log(data);
+	        	//Create The New Rows From Template
+	        	$( "#user_list_row_template" ).tmpl( data ).appendTo( "#users_list" );
+	        },
+	        error: ajaxError
+		});
 		
 		$('#comments_list').listview('refresh');
+		$('#users_list').listview('refresh');
 	});
 	
 	//Bind the add page clear text

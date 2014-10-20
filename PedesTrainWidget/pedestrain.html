@@ -1,59 +1,33 @@
 <!DOCTYPE html>
 <html >
 	<head>
-		<!--
-	  <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css">
-	  <link rel="stylesheet" href="css/app.css">
-	  <link rel="stylesheet" href="css/animations.css">
-
-	  <script src="bower_components/jquery/jquery.js"></script>
-	  <script src="bower_components/angular/angular.js"></script>
-	  <script src="bower_components/angular-animate/angular-animate.js"></script>
-	  <script src="bower_components/angular-route/angular-route.js"></script>
-	  <script src="bower_components/angular-resource/angular-resource.js"></script>
-	  <script src="js/app.js"></script>
-	  <script src="js/animations.js"></script>
-	  <script src="js/controllers.js"></script>
-	  <script src="js/filters.js"></script>
-	  <script src="js/services.js"></script>
--->
-<style>
-  body {background-color:lightgray}
-  h1   {color:blue}
-  p    {color:green}
-</style>
+		
 	</head>
-	<body background="img/AvOcpSA.jpg">
-		Hello World
+	<body>
+		<div data-role="page" id="list_comments_page">
+			<p>Well, Hello There World!</p>
+			<button>
+				<a id='add_comment_page_button' href='#add_comment_page' data-transition="slide" data-icon="add" data-iconpos="notext" class="ui-btn-right">
+					Get Outta Here!
+				</a>
+			</button>
+		</div>
 
 		<div data-role="page" id="list_comments_page">
 		    <div data-role='header' data-position='inline' data-theme='d'>
-			    <h1>Apps Over Naps Widget</h1>
-			    
-		        
-		    	
+			    <h1>PedesTrain Widget</h1>
+		    
 		   	</div>
 
 			<div id="content" data-role="content">
 				
 				<br>
 				<button type="button">
-					Add a new COMMENT!
-					<a id='add_comment_page_button' href='#add_comment_page' data-transition="slide" data-icon="add" data-iconpos="notext" class="ui-btn-right"></a>
+					Add a new COMMENT! 
 				</button>
-				<br><br><br>
-<!--
-				<ul id="users_list" data-role="listview" data-inset="true" data-filter="true" data-theme="c" data-divider-theme="b">
-					this is a list of users
-					<script id="comment_list_row_template" type="text/x-jquery-tmpl">
-						<li class="comment_list_row" id="comment_${User ID}">
-							<a href='#edit_comment_page&comment_id=${User ID}' data-transition="slide">
-								<h1>${First Name}</h1>
-							</a>
-						</li>
-					</script>
-				</ul>
-			-->
+				<br>
+				<br>
+				<br>
 				<ul id="comments_list" data-role="listview" data-inset="true" data-filter="true" data-theme="c" data-divider-theme="b">
 					this is a list of comments
 					<script id="comment_list_row_template" type="text/x-jquery-tmpl">
@@ -67,12 +41,12 @@
 					</script>
 				</ul>
 
-				<ul id="comments_list" data-role="listview" data-inset="true" data-filter="true" data-theme="c" data-divider-theme="b">
-					this is a list of times
-					<script id="comment_list_row_template" type="text/x-jquery-tmpl">
-						<li class="comment_list_row" id="comment_${id}">
+				<ul id="users_list" data-role="listview" data-inset="true" data-filter="true" data-theme="c" data-divider-theme="b">
+					this is a list of users
+					<script id="user_list_row_template" type="text/x-jquery-tmpl">
+						<li class="user_list_row" id="user_${id}">
 							<a href='#edit_comment_page&comment_id=${id}' data-transition="slide">
-								<h1>${comment}</h1>
+								<h1>${first_name}</h1>
 							</a>
 						</li>
 					</script>
