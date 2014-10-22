@@ -4,6 +4,7 @@ import java.util.Calendar;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.widget.ArrayAdapter;
@@ -43,6 +44,13 @@ public class ScheduleActivity extends Activity {
 		Calendar c = Calendar.getInstance();
 		int currentHour = c.get(Calendar.HOUR);
 		int currentMinutes = c.get(Calendar.MINUTE);
+		int timeOfDay = c.get(Calendar.AM_PM);
+		
+		String timePeriod = " AM";
+		
+		if (timeOfDay == 1) {
+			timePeriod = " PM";
+		}
 		
 		int closestTime;
 		
@@ -60,15 +68,25 @@ public class ScheduleActivity extends Activity {
 		
 		//Create an array of strings of upcoming 20 minute intervals
 		for (int i = 0; i < timeSlots.length; i++) {
-			timeSlots[i] = String.format("%02d", currentHour) + ":" + String.format("%02d", closestTime);
+			
+			
+			
+			timeSlots[i] = String.format("%02d", currentHour) + ":" + String.format("%02d", closestTime) + timePeriod;
 			closestTime += 20;
 			if (closestTime == 60) {
 				closestTime = 0;
 				currentHour++;
 			}
-			if (currentHour == 24) {
+			if (currentHour == 13) {
 				currentHour = 0;
+				if (timeOfDay == 1) {
+					timePeriod = " AM";
+				} else {
+					timePeriod = " PM";
+				}
 			}
+			
+
 		}
 
 		//Attach the strings to the listview
