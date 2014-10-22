@@ -7,5 +7,7 @@
     <string name="take_home_button">Take\nMe\nHome</string>
     <string name="title_activity_schedule">MainActivity</string>
     <string name="schedule_title">Schedule A Walk</string>
+    <string name="title_activity_favorites">FavoritesActivity</string>
+    <string name="favorite_title">Favorite Locations</string>
 
 </resources>
