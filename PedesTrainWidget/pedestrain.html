@@ -1,30 +1,28 @@
 <!DOCTYPE html>
 <html >
 	<head>
-		
+		<style>
+			  body {background-color:black}
+			  h1   {color:blue}
+			  p    {color:gray}
+		</style>
 	</head>
 	<body>
-		<div data-role="page" id="list_comments_page">
-			<p>Well, Hello There World!</p>
-			<button>
-				<a id='add_comment_page_button' href='#add_comment_page' data-transition="slide" data-icon="add" data-iconpos="notext" class="ui-btn-right">
-					Get Outta Here!
-				</a>
-			</button>
-		</div>
 
 		<div data-role="page" id="list_comments_page">
 		    <div data-role='header' data-position='inline' data-theme='d'>
 			    <h1>PedesTrain Widget</h1>
-		    
+		    	<a id='add_comment_page_button' href='#add_comment_page' data-transition="slide" data-icon="add" data-iconpos="notext" class="ui-btn-right"></a>
 		   	</div>
 
 			<div id="content" data-role="content">
 				
 				<br>
-				<button type="button">
+				<a id='add_comment_page_button' href='#add_comment_page' data-transition="slide">
+			 	<button type="button">
 					Add a new COMMENT! 
-				</button>
+				</button> 
+				</a>
 				<br>
 				<br>
 				<br>
@@ -41,12 +39,23 @@
 					</script>
 				</ul>
 
+				<br>
+				<br>
+				<a id='add_user_page_button' href='#add_user_page' data-transition="slide">
+			 	<button type="button">
+					Add a new USER! 
+				</button> 
+				</a>
+				<br>
+				<br>
+
 				<ul id="users_list" data-role="listview" data-inset="true" data-filter="true" data-theme="c" data-divider-theme="b">
-					this is a list of users
+					<p>this is a list of users<br>
 					<script id="user_list_row_template" type="text/x-jquery-tmpl">
 						<li class="user_list_row" id="user_${id}">
-							<a href='#edit_comment_page&comment_id=${id}' data-transition="slide">
-								<h1>${first_name}</h1>
+							<a href='#edit_user_page&user_id=${user_id}' data-transition="slide">
+								<h1>${last_name}, ${first_name}</h1>
+								<p>${email_address}</p>
 							</a>
 						</li>
 					</script>
@@ -58,17 +67,62 @@
 	
 		<!--******************************************************************************************************************************-->
 		
+		<div data-role="page" id="add_user_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+				<a href="#list_comments_page" data-direction="reverse" data-icon="back" data-theme="d">Cancel</a>
+		        <h1 class='head_title'>Create a new User</h1>
+		        <a id="add_user_button" href="#list_comments_page" data-direction="reverse" data-icon="plus" data-theme="d">Add User</a>
+		    </div>
+			<div id="add_user_content" data-role="content">
+				<div id="" class="comment_form">
+					First Name: <textarea rows="8" id="add_user_first_name"></textarea>
+					Last Name:<textarea rows="8" id="add_user_last_name"></textarea>
+					Email: <textarea rows="8" id="add_user_email_address"></textarea>
+					Phone: <textarea rows="8" id="add_user_phone_number"></textarea>
+				</div>
+			</div>
+		</div>
+	
+		<!--******************************************************************************************************************************-->
+		
 		<div data-role="page" id="add_comment_page">
 			<div data-role="header" data-position="inline" data-theme='d'>
 				<a href="#list_comments_page" data-direction="reverse" data-icon="back" data-theme="d">Cancel</a>
-		        <h1 class='head_title'>Add Comment</h1>
-		        <a id="add_button" href="#list_comments_page" data-direction="reverse" data-icon="plus" data-theme="d">Add</a>
+		        <h1 class='head_title'>Create a new Comment</h1>
+		        <a id="add_comment_button" href="#list_comments_page" data-direction="reverse" data-icon="plus" data-theme="d">Add Comment</a>
 		    </div>
 			<div id="add_comment_content" data-role="content">
 				<div class="comment_form">
 					<textarea rows="8" id="add_comment_text"></textarea>
 		        </div>
 			</div>
+		</div>
+	
+		<!--******************************************************************************************************************************-->
+		
+		<div data-role="page" id="edit_user_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+				<a href="#list_comments_page" data-direction="reverse" data-icon="back" data-theme="d">Cancel</a>
+		        <h1 class='head_title'>Edit User</h1>
+		        <a id="save_button" href="#list_comments_page" data-direction="reverse" data-icon="plus" data-theme="d">Save</a>
+		    </div>
+			<div id="edit_user_content" data-role="content">	
+				first_name
+				<div id="user_first_name" class="comment_form">
+					<textarea rows="8" id="edit_comment_text"></textarea>
+		        </div>
+				last_name
+				<div class="comment_form">
+					<textarea rows="8" id="edit_comment_text"></textarea>
+		        </div>
+				email_address
+				<div class="comment_form">
+					<textarea rows="8" id="edit_comment_text"></textarea>
+		        </div>
+				<center>
+					<a id='remove_button' href='#list_comments_page' data-direction="reverse" data-role='button' data-inline="true" data-icon="minus">Remove comment</a>
+				</center>
+			</div> 
 		</div>
 	
 		<!--******************************************************************************************************************************-->
@@ -108,6 +162,6 @@
 				</script>
 			</div><!-- /content -->
 		</div><!-- /dialog -->
-
+ -->
 	</body>
 </html>

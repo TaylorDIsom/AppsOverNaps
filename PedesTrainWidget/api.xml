@@ -25,10 +25,30 @@
 
 	<command id='users' security='public'>
 		<description><![CDATA[This simple API lets you add and remove comments]]></description>
+
 		<index>
 			<description><![CDATA[This is how you can get a listing of all times]]></description>
 			<action file='pedestrain.php'><![CDATA[listUsers();]]></action>
 		</index>
+		
+		<get>
+			<description><![CDATA[This is how you can get a specific user]]></description>
+			
+			<action file='pedestrain.php'><![CDATA[getUser($_REST['users']);]]></action>
+		</get>
+		
+		<post>
+			<description><![CDATA[This is how you can create a user]]></description>
+			
+			<action file='pedestrain.php'><![CDATA[addUser($_POST['newUser']);]]></action>
+			
+			<param id='newUser'>
+				<description><![CDATA[Comment Text]]></description>
+				<defaultValue><![CDATA[some default comment text]]></defaultValue>
+				<exampleValue><![CDATA[some example commment text]]></exampleValue>
+			</param>
+		</post>
+
 	</command>
 
 
@@ -66,9 +86,9 @@
 		<post>
 			<description><![CDATA[This is how you can create a comment]]></description>
 			
-			<action file='pedestrain.php'><![CDATA[addComment($_POST['commentText']);]]></action>
+			<action file='pedestrain.php'><![CDATA[addComment($_POST['comment']);]]></action>
 			
-			<param id='commentText'>
+			<param id='comment'>
 				<description><![CDATA[Comment Text]]></description>
 				<defaultValue><![CDATA[some default comment text]]></defaultValue>
 				<exampleValue><![CDATA[some example commment text]]></exampleValue>
@@ -94,50 +114,5 @@
 		</delete>
 	</command>
 
-	<command id='aon' security='public'>
-		<description><![CDATA[This simple API lets you add and remove comments]]></description>
-		
-		<index>
-			<description><![CDATA[This is how you can get a listing of all comments]]></description>
-			
-			<action file='pedestrain.php'><![CDATA[listComments();]]></action>
-		</index>
-		
-		<get>
-			<description><![CDATA[This is how you can get a specific comment]]></description>
-			
-			<action file='pedestrain.php'><![CDATA[getComment($_REST['comment']);]]></action>
-		</get>
-		
-		<post>
-			<description><![CDATA[This is how you can create a comment]]></description>
-			
-			<action file='pedestrain.php'><![CDATA[addComment($_POST['commentText']);]]></action>
-			
-			<param id='commentText'>
-				<description><![CDATA[Comment Text]]></description>
-				<defaultValue><![CDATA[some default comment text]]></defaultValue>
-				<exampleValue><![CDATA[some example commment text]]></exampleValue>
-			</param>
-		</post>
-		
-		<put>
-			<description><![CDATA[This is how you can update a comment]]></description>
-			
-			<action file='pedestrain.php'><![CDATA[updateComment($_REST['comment'],$_POST['commentText']);]]></action>
-			
-			<param id='commentText'>
-				<description><![CDATA[Comment Text To Update]]></description>
-				<defaultValue><![CDATA[some default comment text update]]></defaultValue>
-				<exampleValue><![CDATA[some example commment text update]]></exampleValue>
-			</param>
-		</put>
-		
-		<delete>
-			<description><![CDATA[This is how you can delete a comment]]></description>
-			
-			<action file='pedestrain.php'><![CDATA[deleteComment($_REST['comment']);]]></action>
-		</delete>
-	</command>
 
 </api>

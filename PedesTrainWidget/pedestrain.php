@@ -16,12 +16,32 @@
 	}
 
 	function listUsers() {
-		$dbQuery = sprintf("SELECT `first_name` FROM `users`");
+		$dbQuery = sprintf("SELECT * FROM `users`");
 		$result = getDBResultsArray($dbQuery);
 		header("Content-type: application/json");
 		echo json_encode($result);
 	}
 
+	function getUser($user) {
+		$dbQuery = sprintf("SELECT * FROM `users` WHERE `user_id` = '%s'",
+			mysql_real_escape_string($user));
+		$result=getDBResultRecord($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+	
+	function addUser($newUser) {
+		//$dbQuery = sprintf("INSERT INTO comments (comment) VALUES ('%s')",
+		//	mysql_real_escape_string($comment));
+		$newUser = json_decode($newUser, true);
+		$dbQuery = sprintf("INSERT INTO `CONTRIB_appsovernaps`.`users` (`user_id`, `first_name`, `last_name`, `email_address`, `phone_number`, `status`) VALUES (NULL,". $newUser->["fName"] . "," . $newUser->["lName"] . "," . $newUser->["email"] . "," . $newUser->["phone"] . ", '')",
+			mysql_real_escape_string($fName, $lName, $email, $phone));
+
+		$result = getDBResultInserted($dbQuery,'user');
+		
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
 
 
 
@@ -39,7 +59,7 @@
 		echo json_encode($result);
 	}
 	
-	function getComment($id) {
+	function getComment($id) {        
 		$dbQuery = sprintf("SELECT id,comment FROM comments WHERE id = '%s'",
 			mysql_real_escape_string($id));
 		$result=getDBResultRecord($dbQuery);

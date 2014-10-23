@@ -1,5 +1,4 @@
 console.log('RUNNING PEDESTRAIN JAVASCRIPT');
-console.log($('#home_page'));
 console.log($('#list_comments_page'));
 console.log($('#add_comment_page'));
 console.log($('#edit_comment_page'));
@@ -7,13 +6,6 @@ console.log($('#edit_comment_page'));
 $(function() {
  // Handler for .ready() called.
 	console.log('ready');
-
-
-	//
-	$('#home_page').bind('pagebeforeshow', function() {
-		console.log("Home Page");
-		
-	});
 
 	//Bind to the create so the page gets updated with the listing
 	$('#list_comments_page').bind('pagebeforeshow',function(event, ui){
@@ -54,24 +46,62 @@ $(function() {
 	});
 	
 	//Bind the add page clear text
+	$('#add_user_page').bind('pagebeforeshow', function() {
+		console.log("Add User Page");
+		$('#add_user_first_name')[0].value = "";
+	});
+	
+	//Bind the add page clear text
 	$('#add_comment_page').bind('pagebeforeshow', function() {
 		console.log("Add Comment Page");
 		$('#add_comment_text')[0].value = "";
 	});
 		
 	//Bind the add page button
-	$('#add_button').bind('click', function() {
+	$('#add_user_button').bind('click', function() {
 		console.log("Add Button");
 		$.ajax({
-			url: "api/comment",
+			url: "api/users",
 			dataType: "json",
 	        async: false,
-			data: {'commentText': $('#add_comment_text')[0].value},
+			data: {'commentText': $('#add_user_first_name')[0].value},
 			type: 'POST',
 	        error: ajaxError
 		});
 	});
 		
+	//Bind the add page button
+	$('#add_comment_button').bind('click', function() {
+		console.log("Add Button");
+		$.ajax({
+			url: "api/comment",
+			dataType: "json",
+	        async: false,
+			data: {'comment': $('#add_comment_text')[0].value},
+			type: 'POST',
+	        error: ajaxError
+		});
+	});
+		
+	//Bind the edit page init text
+	$('#edit_user_page').bind('pagebeforeshow', function() {
+		console.log("Edit User Page");
+		var user_id = $.url().fparam("user_id");
+		
+		//Instead of passing around in JS I am doing AJAX so direct links work
+		//JQuery Fetch The Comment
+		$.ajax({
+			url: "api/users/"+user_id,
+			dataType: "json",
+	        async: false,
+	        success: function(data, textStatus, jqXHR) {
+				console.log(data);
+	       		//$('#edit_user_text')[0].value = data;//.comment;
+	        },
+	        error: ajaxError
+		});
+	});
+	
 	//Bind the edit page init text
 	$('#edit_comment_page').bind('pagebeforeshow', function() {
 		console.log("Edit Comment Page");
@@ -122,6 +152,12 @@ $(function() {
 	//Cleanup of URL so we can have better client URL support
 	$('#edit_comment_page').bind('pagehide', function() {
 		$(this).attr("data-url",$(this).attr("id"));
+		delete $(this).data()['url'];
+	});
+	
+	//Cleanup of URL so we can have better client URL support
+	$('#edit_user_page').bind('pagehide', function() {
+		$(this).attr("data-url",$(this).attr("user_id"));
 		delete $(this).data()['url'];
 	});
 
