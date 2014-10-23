@@ -15,19 +15,35 @@ import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
 import android.widget.EditText;
 
 public class AddFavorite extends Activity {
 
 	EditText favoriteName;
+	Button button;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_favorite);
 		favoriteName = (EditText) findViewById(R.id.editText1);
+		button = (Button) findViewById(R.id.button1);
+		button.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Thread thread = new Thread(new Runnable(){
+					@Override
+					public void run(){
+						addFavoritePost();
+					}
+                });
+                thread.start();
+			}
+		});
 	}
 
 	@Override
@@ -54,7 +70,7 @@ public class AddFavorite extends Activity {
 	    HttpPost httppost = new HttpPost("http://dev.m.gatech.edu/d/tisom3/w/pedestrain/c/api/favorites");
 	    try {
 	        // Add your data
-	        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(2);
+	        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(1);
 	        nameValuePairs.add(new BasicNameValuePair("favorite", favoriteName.getText().toString()));
 	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 

@@ -14,18 +14,32 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 public class FavoritesActivity extends Activity {
 
 	public String apiURL = "http://dev.m.gatech.edu/d/tisom3/w/pedestrain/c/";
 	
+	Button button;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_favorites);
 		
-
+		button = (Button) findViewById(R.id.button1);
+		button.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Thread thread = new Thread(new Runnable(){
+					@Override
+					public void run(){
+						openAddFavorite();
+					}
+                });
+                thread.start();
+			}
+		});
 		new GetFavorites().execute(apiURL + "api/favorites");
 
 	}
@@ -49,7 +63,7 @@ public class FavoritesActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	public void openAddFavorite(View view) {
+	public void openAddFavorite() {
 		Intent intent = new Intent(this, AddFavorite.class);
 		startActivity(intent);
 	}
