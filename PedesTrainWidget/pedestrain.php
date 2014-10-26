@@ -16,6 +16,17 @@
 		echo json_encode($result);
 	}
 	
+	function addFavorite($name,$address,$userId) {
+		$dbQuery = sprintf("INSERT INTO `CONTRIB_appsovernaps`.`favorites` 
+			(`Location ID`, `Name`, `Address`, `Latitude`, `Longitude`, `User`) 
+			VALUES (NULL, '$name', '$address', 'lat', 'long', '$userId')",
+			mysql_real_escape_string());
+		$result = getDBResultInserted($dbQuery,'personId');
+		
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+	
 
 	function listSchedule() {
 		$dbQuery = sprintf("SELECT * FROM `schedule`");
@@ -28,6 +39,17 @@
 		$dbQuery = sprintf("SELECT * FROM `schedule` WHERE `id` = '%s'",
 			mysql_real_escape_string($schedule));
 		$result=getDBResultRecord($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+	
+	function addSchedule($date,$time,$trainId) {
+		$dbQuery = sprintf("INSERT INTO `CONTRIB_appsovernaps`.`schedule` 
+			(`schedule_id`, `date`, `time`, `train_id`) 
+			VALUES (NULL, '$date', '$time', '$trainId')",
+			mysql_real_escape_string());
+		$result = getDBResultInserted($dbQuery,'personId');
+		
 		header("Content-type: application/json");
 		echo json_encode($result);
 	}

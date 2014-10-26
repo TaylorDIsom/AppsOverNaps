@@ -19,6 +19,28 @@
 			
 			<action file='pedestrain.php'><![CDATA[getFavorites($_REST['favorites']);]]></action>
 		</get>
+		
+		<post>
+			<description><![CDATA[This is how you can create a user]]></description>
+			
+			<action file='pedestrain.php'><![CDATA[addFavorite($_POST['name'],$_POST['address'],$_POST['userId']);]]></action>
+			
+			<param id='name'>
+				<description><![CDATA[Comment Text]]></description>
+				<defaultValue><![CDATA[some default comment text]]></defaultValue>
+				<exampleValue><![CDATA[some example commment text]]></exampleValue>
+			</param>
+			<param id='address'>
+				<description><![CDATA[Comment Text]]></description>
+				<defaultValue><![CDATA[some default comment text]]></defaultValue>
+				<exampleValue><![CDATA[some example commment text]]></exampleValue>
+			</param>
+			<param id='userId'>
+				<description><![CDATA[Comment Text]]></description>
+				<defaultValue><![CDATA[some default comment text]]></defaultValue>
+				<exampleValue><![CDATA[some example commment text]]></exampleValue>
+			</param>
+		</post>
 
 	</command>
 
@@ -34,6 +56,28 @@
 			
 			<action file='pedestrain.php'><![CDATA[getSchedule($_REST['schedule']);]]></action>
 		</get>
+		
+		<post>
+			<description><![CDATA[This is how you can create a user]]></description>
+			
+			<action file='pedestrain.php'><![CDATA[addSchedule($_POST['date'],$_POST['time'],$_POST['trainId']);]]></action>
+			
+			<param id='date'>
+				<description><![CDATA[Comment Text]]></description>
+				<defaultValue><![CDATA[some default comment text]]></defaultValue>
+				<exampleValue><![CDATA[some example commment text]]></exampleValue>
+			</param>
+			<param id='time'>
+				<description><![CDATA[Comment Text]]></description>
+				<defaultValue><![CDATA[some default comment text]]></defaultValue>
+				<exampleValue><![CDATA[some example commment text]]></exampleValue>
+			</param>
+			<param id='trainId'>
+				<description><![CDATA[Comment Text]]></description>
+				<defaultValue><![CDATA[some default comment text]]></defaultValue>
+				<exampleValue><![CDATA[some example commment text]]></exampleValue>
+			</param>
+		</post>
 
 	</command>
 

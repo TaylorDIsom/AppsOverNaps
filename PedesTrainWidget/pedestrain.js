@@ -139,6 +139,56 @@ $(function() {
 		$('#phone')[0].value = "";
 	});
 		
+	//Bind the add user page button
+	$('#add_favorite_button').bind('click', function() {
+		console.log("Add Button");
+		$.ajax({
+			url: "api/favorites",
+			dataType: "json",
+	        async: false,
+			data: 	{
+					'name': $('#name')[0].value,
+					'address': $('#address')[0].value,
+					'userId': $('#userId')[0].value
+					},
+			type: 'POST',
+	        error: ajaxError
+		});
+	});
+	
+	//Bind the add page clear text
+	$('#add_favorites_page').bind('pagebeforeshow', function() {
+		console.log("Add User Page");
+		$('#name')[0].value = "";
+		$('#address')[0].value = "";
+		$('#userId')[0].value = "";
+	});
+		
+	//Bind the add user page button
+	$('#add_schedule_button').bind('click', function() {
+		console.log("Add Button");
+		$.ajax({
+			url: "api/schedule",
+			dataType: "json",
+	        async: false,
+			data: 	{
+					'date': $('#date')[0].value,
+					'time': $('#time')[0].value,
+					'trainId': $('#trainId')[0].value
+					},
+			type: 'POST',
+	        error: ajaxError
+		});
+	});
+	
+	//Bind the add page clear text
+	$('#add_schedule_page').bind('pagebeforeshow', function() {
+		console.log("Add User Page");
+		$('#date')[0].value = "";
+		$('#time')[0].value = "";
+		$('#trainId')[0].value = "";
+	});
+		
 	//Bind the add page button
 	$('#add_comment_button').bind('click', function() {
 		console.log("Add Button");

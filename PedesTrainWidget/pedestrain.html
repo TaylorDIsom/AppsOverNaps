@@ -1,16 +1,29 @@
 <!DOCTYPE html>
 <html >
 	<head>
-		<style>
-			  body {background-color:black}
+		<style  type="text/css">
+	      html, body, #map_canvas { height: 100%; margin: 0; padding: 0;}
+			  /*body {background-color:black}*/
 			  h1   {color:blue}
 			  p    {color:gray}
 		</style>
+	    <script type="text/javascript"
+	      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyARXITmR5bE4dv1Hf8AnsQ1d3EPJYFJUXI">
+	    </script>
+	    <script type="text/javascript">
+	      function initialize() {
+	        var mapOptions = {
+	          center: { lat: -34.397, lng: 150.644},
+	          zoom: 8
+	        };
+	        var map = new google.maps.Map(document.getElementById('map_canvas'),
+	            mapOptions);
+	      }
+	      google.maps.event.addDomListener(window, 'load', initialize);
+	    </script>
 	</head>
-	<body>
+	<body style="width: 100%; height: 100%">
 
-
-		
 		<div data-role="page" id="login_page">
 			<div data-role="header" data-position="inline" data-theme='d'>
 		        <h1 class='head_title'>PedesTrain</h1>
@@ -80,19 +93,7 @@
 				<a href="#home_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
 		        <h1 class='head_title'>PedesTrain Map</h1>
 		    </div>
-			<div id="home_content" data-role="content">
-				<div id="" class="comment_form">
-					<a id='go_button' href="#map_page" data-transition="slide">
-						<button>Go</button>
-					</a>
-					<a id='favorites_button' href="#favorites_page" data-transition="slide">
-						<button>Favorites</button>
-					</a>
-					<a id='schedule_button' href="#schedule_page" data-transition="slide">
-						<button>Schedule</button>
-					</a>
-				</div>
-			</div>
+			<div id="map_canvas" style="height: 100%"></div>
 		</div>
 
 		<!--************************************************************************************************-->
@@ -227,9 +228,14 @@
 		    </div>
 			<div id="add_comment_content" data-role="content">
 				<div class="comment_form">
-					<textarea rows="8" id="add_comment_text"></textarea>
+					Name: <textarea rows="8" id="name"></textarea>
+					Address: <textarea rows="8" id="address"></textarea>
+					User ID: <textarea rows="8" id="userId"></textarea>
 		        </div>
 			</div>
+			<a id="add_favorite_button" href="#favorites_page">
+				<button>Save Favorite</button>
+			</a>
 		</div>
 		
 			<!--********************************************************************************************-->
@@ -255,11 +261,16 @@
 				<a href="#schedule_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
 		        <h1 class='head_title'>Add a Schedule</h1>
 		    </div>
-			<div id="add_comment_content" data-role="content">
+			<div id="add_schedule_content" data-role="content">
 				<div class="comment_form">
-					<textarea rows="8" id="add_comment_text"></textarea>
+					date (year-month-day): <textarea rows="8" id="date"></textarea>
+					time (hour:minute:second): <textarea rows="8" id="time"></textarea>
+					Train ID: <textarea rows="8" id="trainId"></textarea>
 		        </div>
 			</div>
+			<a id="add_schedule_button" href="#schedule_page">
+				<button>Save Schedule</button>
+			</a>
 		</div>
 		
 			<!--********************************************************************************************-->
