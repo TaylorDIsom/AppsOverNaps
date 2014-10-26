@@ -8,6 +8,52 @@ $(function() {
 	console.log('ready');
 
 	//Bind to the create so the page gets updated with the listing
+	$('#favorites_page').bind('pagebeforeshow',function(event, ui){
+		console.log('pagebeforeshow');
+	
+		//Remove the old rows
+		$( ".favorites_list_row" ).remove();
+		
+		//JQuery Fetch The New Ones
+		$.ajax({
+			url: "api/favorites",
+			dataType: "json",
+	        async: false,
+	        success: function(data, textStatus, jqXHR) {
+				console.log(data);
+	        	//Create The New Rows From Template
+	        	$( "#favorites_list_row_template" ).tmpl( data ).appendTo( "#favorites_list" );
+	        },
+	        error: ajaxError
+		});
+
+		$('#favorites_list').listview('refresh');
+	});
+
+	//Bind to the create so the page gets updated with the listing
+	$('#schedule_page').bind('pagebeforeshow',function(event, ui){
+		console.log('pagebeforeshow');
+	
+		//Remove the old rows
+		$( ".schedule_list_row" ).remove();
+		
+		//JQuery Fetch The New Ones
+		$.ajax({
+			url: "api/schedule",
+			dataType: "json",
+	        async: false,
+	        success: function(data, textStatus, jqXHR) {
+				console.log(data);
+	        	//Create The New Rows From Template
+	        	$( "#schedule_list_row_template" ).tmpl( data ).appendTo( "#schedule_list" );
+	        },
+	        error: ajaxError
+		});
+
+		$('#schedule_list').listview('refresh');
+	});
+
+	//Bind to the create so the page gets updated with the listing
 	$('#list_comments_page').bind('pagebeforeshow',function(event, ui){
 		console.log('pagebeforeshow');
 	
@@ -44,11 +90,20 @@ $(function() {
 		$('#comments_list').listview('refresh');
 		$('#users_list').listview('refresh');
 	});
-	
+
+	//Bind the add page clear text
+	$('#login_page').bind('pagebeforeshow', function() {
+		console.log("Login Page");
+		//$('#add_comment_text')[0].value = "";
+	});
+
 	//Bind the add page clear text
 	$('#add_user_page').bind('pagebeforeshow', function() {
 		console.log("Add User Page");
-		$('#add_user_first_name')[0].value = "";
+		//$('#first_name')[0].value = "";
+		// $('#last_name')[0].value = "";
+		// $('#email')[0].value = "";
+		// $('#phone')[0].value = "";
 	});
 	
 	//Bind the add page clear text
@@ -57,17 +112,31 @@ $(function() {
 		$('#add_comment_text')[0].value = "";
 	});
 		
-	//Bind the add page button
+	//Bind the add user page button
 	$('#add_user_button').bind('click', function() {
 		console.log("Add Button");
 		$.ajax({
 			url: "api/users",
 			dataType: "json",
 	        async: false,
-			data: {'commentText': $('#add_user_first_name')[0].value},
+			data: 	{
+					'firstName': $('#firstName')[0].value,
+					'lastName': $('#lastName')[0].value,
+					'email': $('#email')[0].value,
+					'phone': $('#phone')[0].value
+					},
 			type: 'POST',
 	        error: ajaxError
 		});
+	});
+	
+	//Bind the add page clear text
+	$('#add_user_page').bind('pagebeforeshow', function() {
+		console.log("Add User Page");
+		$('#firstName')[0].value = "";
+		$('#lastName')[0].value = "";
+		$('#email')[0].value = "";
+		$('#phone')[0].value = "";
 	});
 		
 	//Bind the add page button

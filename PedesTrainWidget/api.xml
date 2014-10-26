@@ -13,6 +13,13 @@
 			<description><![CDATA[This is how you can get a listing of all the favorites]]></description>
 			<action file='pedestrain.php'><![CDATA[listFavorites();]]></action>
 		</index>
+		
+		<get>
+			<description><![CDATA[This is how you can get a specific user]]></description>
+			
+			<action file='pedestrain.php'><![CDATA[getFavorites($_REST['favorites']);]]></action>
+		</get>
+
 	</command>
 
 	<command id='schedule' security='public'>
@@ -21,6 +28,13 @@
 			<description><![CDATA[This is how you can get a listing of the schedule]]></description>
 			<action file='pedestrain.php'><![CDATA[listSchedule();]]></action>
 		</index>
+		
+		<get>
+			<description><![CDATA[This is how you can get a specific user]]></description>
+			
+			<action file='pedestrain.php'><![CDATA[getSchedule($_REST['schedule']);]]></action>
+		</get>
+
 	</command>
 
 	<command id='users' security='public'>
@@ -40,9 +54,24 @@
 		<post>
 			<description><![CDATA[This is how you can create a user]]></description>
 			
-			<action file='pedestrain.php'><![CDATA[addUser($_POST['newUser']);]]></action>
+			<action file='pedestrain.php'><![CDATA[addUser($_POST['firstName'],$_POST['lastName'],$_POST['email'],$_POST['phone']);]]></action>
 			
-			<param id='newUser'>
+			<param id='firstName'>
+				<description><![CDATA[Comment Text]]></description>
+				<defaultValue><![CDATA[some default comment text]]></defaultValue>
+				<exampleValue><![CDATA[some example commment text]]></exampleValue>
+			</param>
+			<param id='lastName'>
+				<description><![CDATA[Comment Text]]></description>
+				<defaultValue><![CDATA[some default comment text]]></defaultValue>
+				<exampleValue><![CDATA[some example commment text]]></exampleValue>
+			</param>
+			<param id='email'>
+				<description><![CDATA[Comment Text]]></description>
+				<defaultValue><![CDATA[some default comment text]]></defaultValue>
+				<exampleValue><![CDATA[some example commment text]]></exampleValue>
+			</param>
+			<param id='phone'>
 				<description><![CDATA[Comment Text]]></description>
 				<defaultValue><![CDATA[some default comment text]]></defaultValue>
 				<exampleValue><![CDATA[some example commment text]]></exampleValue>

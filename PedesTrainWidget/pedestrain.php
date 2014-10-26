@@ -8,12 +8,30 @@
 		echo json_encode($result);
 	}
 
+	function getFavorites($favorite) {
+		$dbQuery = sprintf("SELECT * FROM `favorites` WHERE `Location ID` = '%s'",
+			mysql_real_escape_string($favorite));
+		$result=getDBResultRecord($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+	
+
 	function listSchedule() {
 		$dbQuery = sprintf("SELECT * FROM `schedule`");
 		$result = getDBResultsArray($dbQuery);
 		header("Content-type: application/json");
 		echo json_encode($result);
 	}
+
+	function getSchedule($schedule) {
+		$dbQuery = sprintf("SELECT * FROM `schedule` WHERE `id` = '%s'",
+			mysql_real_escape_string($schedule));
+		$result=getDBResultRecord($dbQuery);
+		header("Content-type: application/json");
+		echo json_encode($result);
+	}
+	
 
 	function listUsers() {
 		$dbQuery = sprintf("SELECT * FROM `users`");
@@ -30,14 +48,12 @@
 		echo json_encode($result);
 	}
 	
-	function addUser($newUser) {
-		//$dbQuery = sprintf("INSERT INTO comments (comment) VALUES ('%s')",
-		//	mysql_real_escape_string($comment));
-		$newUser = json_decode($newUser, true);
-		$dbQuery = sprintf("INSERT INTO `CONTRIB_appsovernaps`.`users` (`user_id`, `first_name`, `last_name`, `email_address`, `phone_number`, `status`) VALUES (NULL,". $newUser->["fName"] . "," . $newUser->["lName"] . "," . $newUser->["email"] . "," . $newUser->["phone"] . ", '')",
-			mysql_real_escape_string($fName, $lName, $email, $phone));
-
-		$result = getDBResultInserted($dbQuery,'user');
+	function addUser($firstName,$lastName,$email,$phone) {
+		$dbQuery = sprintf("INSERT INTO `CONTRIB_appsovernaps`.`users` 
+		(`user_id`, `first_name`, `last_name`, `email_address`, `phone_number`, `status`) 
+		VALUES (NULL, '$firstName', '$lastName', '$email', '$phone', '')",
+			mysql_real_escape_string($newUser));
+		$result = getDBResultInserted($dbQuery,'personId');
 		
 		header("Content-type: application/json");
 		echo json_encode($result);

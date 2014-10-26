@@ -9,6 +9,158 @@
 	</head>
 	<body>
 
+
+		
+		<div data-role="page" id="login_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+		        <h1 class='head_title'>PedesTrain</h1>
+		    </div>
+			<div id="login_content" data-role="content">
+				<div id="login form" class="comment_form">
+					Login: <textarea rows="8" id="first_name"></textarea>
+					Password:<textarea rows="8" id="last_name"></textarea>
+					<a id='sign_in_button' href="#home_page" data-transition="slide">
+						<button>Sign In</button>
+					</a>
+					<a id='sign_up_button' href="#add_user_page" data-transition="slide">
+						<button>Sign Up</button>
+					</a>
+				</div>
+			</div>
+		</div>
+	
+		<!--************************************************************************************************-->
+		
+
+		<div data-role="page" id="add_user_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+				<a href="#login_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
+		        <h1 class='head_title'>Register</h1>
+		    </div>
+			<div id="add_user_content" data-role="content">
+				<div id="user_registration" class="comment_form">
+					First Name: <textarea rows="8" id="firstName"></textarea>
+					Last Name:<textarea rows="8" id="lastName"></textarea>
+					Email: <textarea rows="8" id="email"></textarea>
+					Phone: <textarea rows="8" id="phone"></textarea>
+				</div>
+			</div>
+			<a id='add_user_button' href="#home_page" data-transition="slide">
+				<button>Register</button>
+			</a>
+		</div>
+	
+		<!--************************************************************************************************-->
+
+		<div data-role="page" id="home_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+				<a href="#login_page" data-direction="reverse" data-icon="back" data-theme="d">Logout</a>
+		        <h1 class='head_title'>PedesTrain</h1>
+		        <a id="add_user_button" href="#list_comments_page" data-direction="reverse" data-icon="plus" data-theme="d">PedesTrain</a>
+		    </div>
+			<div id="home_content" data-role="content">
+				<div id="" class="comment_form">
+					<a id='go_button' href="#map_page" data-transition="slide">
+						<button>Go</button>
+					</a>
+					<a id='favorites_button' href="#favorites_page" data-transition="slide">
+						<button>Favorites</button>
+					</a>
+					<a id='schedule_button' href="#schedule_page" data-transition="slide">
+						<button>Schedule</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!--************************************************************************************************-->
+
+		<div data-role="page" id="map_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+				<a href="#home_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
+		        <h1 class='head_title'>PedesTrain Map</h1>
+		    </div>
+			<div id="home_content" data-role="content">
+				<div id="" class="comment_form">
+					<a id='go_button' href="#map_page" data-transition="slide">
+						<button>Go</button>
+					</a>
+					<a id='favorites_button' href="#favorites_page" data-transition="slide">
+						<button>Favorites</button>
+					</a>
+					<a id='schedule_button' href="#schedule_page" data-transition="slide">
+						<button>Schedule</button>
+					</a>
+				</div>
+			</div>
+		</div>
+
+		<!--************************************************************************************************-->
+
+		<div data-role="page" id="favorites_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+				<a href="#home_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
+		        <h1 class='head_title'>PedesTrain Favorites</h1>
+		    </div>
+			<div id="home_content" data-role="content">
+				<div id="" class="comment_form">
+					<a id='add_favorites_button' href="#add_favorites_page" data-transition="slide">
+						<button>Add a Favorite</button>
+					</a>
+					<a id='favorites_button' href="#edit_favorites_page" data-transition="slide">
+						<button>Edit Favorites</button>
+					</a>
+				</div>
+				<br>
+				<ul id="favorites_list" data-role="listview" data-inset="true" data-filter="true" data-theme="c" data-divider-theme="b">
+					<script id="favorites_list_row_template" type="text/x-jquery-tmpl">
+						<li class="favorites_list_row" id="favorites_${id}">
+							<a href='#edit_comment_page&comment_id=${id}' data-transition="slide">
+								<h1>${Name}
+								<p><br>${Address}</p>
+								</h1>
+							</a>
+						</li>
+					</script>
+				</ul>
+			</div>
+		</div>
+
+		<!--************************************************************************************************-->
+
+		<div data-role="page" id="schedule_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+				<a href="#home_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
+		        <h1 class='head_title'>PedesTrain Schedule</h1>
+		    </div>
+			<div id="schedule_content" data-role="content">
+				<div id="" class="comment_form">
+					<a id='add_schedule_button' href="#add_schedule_page" data-transition="slide">
+						<button>Add a Schedule</button>
+					</a>
+					<a id='edit_schedule_button' href="#edit_schedule_page" data-transition="slide">
+						<button>Edit Schedule</button>
+					</a>
+				</div>
+				<br>
+				<ul id="schedule_list" data-role="listview" data-inset="true" data-filter="true" data-theme="c" data-divider-theme="b">
+					<script id="schedule_list_row_template" type="text/x-jquery-tmpl">
+						<li class="schedule_list_row" id="schedule_${id}">
+							<a href='#edit_comment_page&comment_id=${id}' data-transition="slide">
+								<h1>${date}
+								<p><br>${time}</p>
+								<p><br>${train_id}</p>
+								</h1>
+							</a>
+						</li>
+					</script>
+				</ul>
+			</div>
+		</div>
+	
+		<!--************************************************************************************************-->
+
+
 		<div data-role="page" id="list_comments_page">
 		    <div data-role='header' data-position='inline' data-theme='d'>
 			    <h1>PedesTrain Widget</h1>
@@ -65,29 +217,71 @@
 			</div>
 		</div>
 	
-		<!--******************************************************************************************************************************-->
+		<!--************************************************************************************************-->
+	
 		
-		<div data-role="page" id="add_user_page">
+		<div data-role="page" id="add_favorites_page">
 			<div data-role="header" data-position="inline" data-theme='d'>
-				<a href="#list_comments_page" data-direction="reverse" data-icon="back" data-theme="d">Cancel</a>
-		        <h1 class='head_title'>Create a new User</h1>
-		        <a id="add_user_button" href="#list_comments_page" data-direction="reverse" data-icon="plus" data-theme="d">Add User</a>
+				<a href="#favorites_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
+		        <h1 class='head_title'>Add a Favorite</h1>
 		    </div>
-			<div id="add_user_content" data-role="content">
-				<div id="" class="comment_form">
-					First Name: <textarea rows="8" id="add_user_first_name"></textarea>
-					Last Name:<textarea rows="8" id="add_user_last_name"></textarea>
-					Email: <textarea rows="8" id="add_user_email_address"></textarea>
-					Phone: <textarea rows="8" id="add_user_phone_number"></textarea>
-				</div>
+			<div id="add_comment_content" data-role="content">
+				<div class="comment_form">
+					<textarea rows="8" id="add_comment_text"></textarea>
+		        </div>
 			</div>
 		</div>
-	
-		<!--******************************************************************************************************************************-->
 		
+			<!--********************************************************************************************-->
+
+		
+		<div data-role="page" id="edit_favorites_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+				<a href="#favorites_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
+		        <h1 class='head_title'>Edit Favorites</h1>
+		    </div>
+			<div id="add_comment_content" data-role="content">
+				<div class="comment_form">
+					<textarea rows="8" id="add_comment_text"></textarea>
+		        </div>
+			</div>
+		</div>
+		
+		<!--************************************************************************************************-->
+	
+		
+		<div data-role="page" id="add_schedule_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+				<a href="#schedule_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
+		        <h1 class='head_title'>Add a Schedule</h1>
+		    </div>
+			<div id="add_comment_content" data-role="content">
+				<div class="comment_form">
+					<textarea rows="8" id="add_comment_text"></textarea>
+		        </div>
+			</div>
+		</div>
+		
+			<!--********************************************************************************************-->
+
+		
+		<div data-role="page" id="edit_schedule_page">
+			<div data-role="header" data-position="inline" data-theme='d'>
+				<a href="#schedule_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
+		        <h1 class='head_title'>Edit Schedule</h1>
+		    </div>
+			<div id="add_comment_content" data-role="content">
+				<div class="comment_form">
+					<textarea rows="8" id="add_comment_text"></textarea>
+		        </div>
+			</div>
+		</div>
+		
+			<!--********************************************************************************************-->
+
 		<div data-role="page" id="add_comment_page">
 			<div data-role="header" data-position="inline" data-theme='d'>
-				<a href="#list_comments_page" data-direction="reverse" data-icon="back" data-theme="d">Cancel</a>
+				<a href="#list_comments_page" data-direction="reverse" data-icon="back" data-theme="d">Back</a>
 		        <h1 class='head_title'>Create a new Comment</h1>
 		        <a id="add_comment_button" href="#list_comments_page" data-direction="reverse" data-icon="plus" data-theme="d">Add Comment</a>
 		    </div>
@@ -98,7 +292,7 @@
 			</div>
 		</div>
 	
-		<!--******************************************************************************************************************************-->
+		<!--***********************************************************************************************-->
 		
 		<div data-role="page" id="edit_user_page">
 			<div data-role="header" data-position="inline" data-theme='d'>
