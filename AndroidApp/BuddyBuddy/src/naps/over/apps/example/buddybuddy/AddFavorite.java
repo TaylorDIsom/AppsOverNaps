@@ -32,7 +32,7 @@ public class AddFavorite extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_favorite);
 		favoriteName = (EditText) findViewById(R.id.editText1);
-		button = (Button) findViewById(R.id.button1);
+		button = (Button) findViewById(R.id.button_add_favorite);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Thread thread = new Thread(new Runnable(){

@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.ActionBar;
 import android.app.Fragment;
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -15,14 +16,36 @@ import android.os.Build;
 public class MainActivity extends Activity {
 //TAKE ME BACK TO TWORLD
 	//this is the master
+	String sessionName;
+	String sessionId;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		Intent intent = getIntent();
+	    
+		//<CAS Login stuff
+		// To get the action of the intent use
+	    String action = intent.getAction();
+
+	    if (!action.equals(Intent.ACTION_VIEW)) {
+	        throw new RuntimeException("Should not happen");
+	    }
+	    
+	    // To get the data use
+	    Uri data = intent.getData();
+	    sessionName = data.getQueryParameter("sessionName");
+	    sessionId = data.getQueryParameter("sessionId");
+	    //CAS Login >
+	    
 		setContentView(R.layout.activity_main);
 		if (savedInstanceState == null) {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
+
+
 	}
 
 	@Override

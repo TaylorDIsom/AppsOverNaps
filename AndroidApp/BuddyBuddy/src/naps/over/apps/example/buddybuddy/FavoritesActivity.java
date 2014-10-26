@@ -28,7 +28,7 @@ public class FavoritesActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_favorites);
 		
-		button = (Button) findViewById(R.id.button1);
+		button = (Button) findViewById(R.id.button_add_favorite);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Thread thread = new Thread(new Runnable(){
