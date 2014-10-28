@@ -79,28 +79,34 @@ public class FavoritesActivity extends Activity {
 
         
         protected void onPostExecute(JSONArray result) {
-    		String[] favorites = new String[result.length()];
-    		JSONObject jsonObject = null;
-            for (int i = 0; i < result.length(); i ++) {
-            	favorites[i] = "";
-            	try {
-					jsonObject = result.getJSONObject(i);
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-            	try {
-					favorites[i] = jsonObject.getString("Name");
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-            }
+        	String[] favorites;
+        	if (result != null) {
+        		favorites = new String[result.length()];
+        		JSONObject jsonObject = null;
+                for (int i = 0; i < result.length(); i ++) {
+                	favorites[i] = "";
+                	try {
+    					jsonObject = result.getJSONObject(i);
+    				} catch (JSONException e) {
+    					e.printStackTrace();
+    				}
+                	try {
+    					favorites[i] = jsonObject.getString("Name");
+    				} catch (JSONException e) {
+    					// TODO Auto-generated catch block
+    					e.printStackTrace();
+    				}
+                }
+        		
+        		
+        		ArrayAdapter<String> adapter = new ArrayAdapter<String>(FavoritesActivity.this, android.R.layout.simple_list_item_1,favorites);
+        		
+        		ListView listView = (ListView) findViewById(R.id.listView1);
+        		listView.setAdapter(adapter);
+        	}
 
-    		
-    		ArrayAdapter<String> adapter = new ArrayAdapter<String>(FavoritesActivity.this, android.R.layout.simple_list_item_1,favorites);
-    		
-    		ListView listView = (ListView) findViewById(R.id.listView1);
-    		listView.setAdapter(adapter);
+
+
         }
     }
 
