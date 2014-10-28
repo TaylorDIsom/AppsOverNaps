@@ -91,6 +91,8 @@ public class MainActivity extends Activity {
 	
 	public void openFavorites(View view) {
 		Intent intent = new Intent(this, FavoritesActivity.class);
+		intent.putExtra("sessionName", sessionName);
+		intent.putExtra("sessionId", sessionId);
 		startActivity(intent);
 	}
 }

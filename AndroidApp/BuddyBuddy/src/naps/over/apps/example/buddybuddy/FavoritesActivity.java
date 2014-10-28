@@ -9,7 +9,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,12 +21,16 @@ public class FavoritesActivity extends Activity {
 	public String apiURL = "http://dev.m.gatech.edu/d/tisom3/w/pedestrain/c/";
 	
 	Button button;
+	String sessionName;
+	String sessionId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_favorites);
-		
+		Intent intent = getIntent();
+		sessionName = intent.getExtras().getString("sessionName");
+		sessionId = intent.getExtras().getString("sessionId");
 		button = (Button) findViewById(R.id.button_add_favorite);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
@@ -65,6 +68,8 @@ public class FavoritesActivity extends Activity {
 	
 	public void openAddFavorite() {
 		Intent intent = new Intent(this, AddFavorite.class);
+		intent.putExtra("sessionName", sessionName);
+		intent.putExtra("sessionId", sessionId);
 		startActivity(intent);
 	}
 
@@ -79,29 +84,34 @@ public class FavoritesActivity extends Activity {
 
         
         protected void onPostExecute(JSONArray result) {
-    		String[] favorites = new String[result.length()];
-    		JSONObject jsonObject = null;
-            for (int i = 0; i < result.length(); i ++) {
-            	favorites[i] = "";
-            	try {
-					jsonObject = result.getJSONObject(i);
-				} catch (JSONException e) {
-					e.printStackTrace();
-				}
-            	try {
-					favorites[i] = jsonObject.getString("Name");
-				} catch (JSONException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-            }
+        	String[] favorites;
+        	if (result != null) {
+        		favorites = new String[result.length()];
+        		JSONObject jsonObject = null;
+                for (int i = 0; i < result.length(); i ++) {
+                	favorites[i] = "";
+                	try {
+    					jsonObject = result.getJSONObject(i);
+    				} catch (JSONException e) {
+    					e.printStackTrace();
+    				}
+                	try {
+    					favorites[i] = jsonObject.getString("Name");
+    				} catch (JSONException e) {
+    					// TODO Auto-generated catch block
+    					e.printStackTrace();
+    				}
+                }
+        		
+        		
+        		ArrayAdapter<String> adapter = new ArrayAdapter<String>(FavoritesActivity.this, android.R.layout.simple_list_item_1,favorites);
+        		
+        		ListView listView = (ListView) findViewById(R.id.listView1);
+        		listView.setAdapter(adapter);
+        	}
 
-    		
-    		ArrayAdapter<String> adapter = new ArrayAdapter<String>(FavoritesActivity.this, android.R.layout.simple_list_item_1,favorites);
-    		
-    		ListView listView = (ListView) findViewById(R.id.listView1);
-    		listView.setAdapter(adapter);
+
+
         }
     }
-
 }

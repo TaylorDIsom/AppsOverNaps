@@ -25,6 +25,7 @@
         android:layout_below="@+id/textView1"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="53dp"
+        android:inputType="text"
         android:ems="10" />
 
     <TextView
