@@ -48,6 +48,7 @@ public class AddFavorite extends Activity {
 					}
                 });
                 thread.start();
+                finish();
 			}
 		});
 	}
