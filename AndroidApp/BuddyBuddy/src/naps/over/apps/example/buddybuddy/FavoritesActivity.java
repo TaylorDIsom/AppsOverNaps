@@ -9,7 +9,6 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -22,13 +21,17 @@ public class FavoritesActivity extends Activity {
 	public String apiURL = "http://dev.m.gatech.edu/d/tisom3/w/pedestrain/c/";
 	
 	Button button;
+	String sessionName;
+	String sessionId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_favorites);
-		
-		button = (Button) findViewById(R.id.button1);
+		Intent intent = getIntent();
+		sessionName = intent.getExtras().getString("sessionName");
+		sessionId = intent.getExtras().getString("sessionId");
+		button = (Button) findViewById(R.id.button_add_favorite);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Thread thread = new Thread(new Runnable(){
@@ -44,11 +47,6 @@ public class FavoritesActivity extends Activity {
 
 	}
 
-	@Override
-	public void onResume() {
-		new GetFavorites().execute(apiURL + "api/favorites");
-	}
-	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -70,6 +68,8 @@ public class FavoritesActivity extends Activity {
 	
 	public void openAddFavorite() {
 		Intent intent = new Intent(this, AddFavorite.class);
+		intent.putExtra("sessionName", sessionName);
+		intent.putExtra("sessionId", sessionId);
 		startActivity(intent);
 	}
 
@@ -114,5 +114,4 @@ public class FavoritesActivity extends Activity {
 
         }
     }
-
 }

@@ -12,5 +12,8 @@
     <string name="add_favorite">Add Favorite</string>
     <string name="title_activity_add_favorite">Add a Favorite Location</string>
     <string name="favorite_name">Location Name</string>
-
+ 	<string name="login_button_text">Login</string>
+ 	<string name="go">GO</string>
+ 	<string name="when">When</string>
+ 	<string name="where">Where</string>
 </resources>

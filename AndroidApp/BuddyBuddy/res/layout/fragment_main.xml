@@ -23,8 +23,8 @@
         android:layout_height="wrap_content"
         android:background="@drawable/oval_button"
         android:id="@+id/ButtonTest"
-        android:text="HOME"
-        android:layout_above="@+id/button2"
+        android:text="@string/go"
+        android:layout_above="@+id/button_where"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="138dp">
     </Button>
@@ -32,21 +32,23 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="SCHEDULE"
-        android:id="@+id/button"
+        android:text="@string/when"
+        android:id="@+id/button_when"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
+		android:layout_alignParentLeft="true"
         android:onClick="openSchedule"/>
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="FAVORITES"
-        android:id="@+id/button2"
+        android:text="@string/where"
+        android:id="@+id/button_where"
 
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
-        android:layout_alignTop="@+id/button"
+        android:layout_alignParentRight="true"
+        android:layout_alignTop="@+id/button_when"
         android:onClick="openFavorites"/>
     
     
