@@ -14,6 +14,7 @@ import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -26,13 +27,18 @@ public class AddFavorite extends Activity {
 
 	EditText favoriteName;
 	Button button;
+	String sessionName;
+	String sessionId;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_favorite);
+		Intent intent = getIntent();
+		sessionName = intent.getExtras().getString("sessionName");
+		sessionId = intent.getExtras().getString("sessionId");
 		favoriteName = (EditText) findViewById(R.id.editText1);
-		button = (Button) findViewById(R.id.button1);
+		button = (Button) findViewById(R.id.button_add_favorite);
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Thread thread = new Thread(new Runnable(){
@@ -42,9 +48,7 @@ public class AddFavorite extends Activity {
 					}
                 });
                 thread.start();
-    			finish();
 			}
-
 		});
 	}
 
@@ -71,16 +75,19 @@ public class AddFavorite extends Activity {
 		HttpClient httpclient = new DefaultHttpClient();
 	    HttpPost httppost = new HttpPost("http://dev.m.gatech.edu/d/tisom3/w/pedestrain/c/api/favorites");
 	    Log.e("favoriteName", favoriteName.getText().toString());
+	    
 	    try {
-	        // Add your data
+	    	 // Add your data
 	        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
 	        nameValuePairs.add(new BasicNameValuePair("name", favoriteName.getText().toString()));
 	        nameValuePairs.add(new BasicNameValuePair("address", "placeholderAddress"));
 	        nameValuePairs.add(new BasicNameValuePair("userId", "1"));
 	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
-
+	        httppost.setHeader("Cookie", sessionName + "=" + sessionId);
+	        
 	        // Execute HTTP Post Request
 	        HttpResponse response = httpclient.execute(httppost);
+	        
 	        
 	    } catch (ClientProtocolException e) {
 	        // TODO Auto-generated catch block
