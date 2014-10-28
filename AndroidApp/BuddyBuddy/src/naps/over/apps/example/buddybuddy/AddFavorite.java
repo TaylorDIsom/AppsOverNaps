@@ -74,6 +74,8 @@ public class AddFavorite extends Activity {
 	public void addFavoritePost() {
 		HttpClient httpclient = new DefaultHttpClient();
 	    HttpPost httppost = new HttpPost("http://dev.m.gatech.edu/d/tisom3/w/pedestrain/c/api/favorites");
+	    Log.e("favoriteName", favoriteName.getText().toString());
+	    
 	    try {
 	    	 // Add your data
 	        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
