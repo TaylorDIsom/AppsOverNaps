@@ -38,6 +38,10 @@
             android:label="@string/title_activity_favorites" >
         </activity>
         <activity
+            android:name=".StationsActivity"
+            android:label="@string/title_activity_stations" >
+        </activity>
+        <activity
             android:name=".AddFavorite"
             android:label="@string/title_activity_add_favorite" >
         </activity>

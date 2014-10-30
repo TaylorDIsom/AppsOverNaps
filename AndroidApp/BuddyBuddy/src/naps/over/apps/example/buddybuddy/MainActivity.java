@@ -95,4 +95,14 @@ public class MainActivity extends Activity {
 		intent.putExtra("sessionId", sessionId);
 		startActivity(intent);
 	}
+
+	public void openStations(View view) {
+		Intent intent = new Intent(this, StationsActivity.class);
+		intent.putExtra("sessionName", sessionName);
+		intent.putExtra("sessionId", sessionId);
+		//TODO: decide if when and where values are passed in or retrieved afterwards
+		intent.putExtra("when", "lorem ipsum");
+		intent.putExtra("where", "lorem ipsum");
+		startActivity(intent);
+	}
 }

@@ -16,4 +16,7 @@
  	<string name="go">GO</string>
  	<string name="when">When</string>
  	<string name="where">Where</string>
+ 	<string name="stations_title">Select a Station</string>
+ 	<string name="title_activity_stations">Stations</string>
+ 	<string name="stations">Stations</string>
 </resources>

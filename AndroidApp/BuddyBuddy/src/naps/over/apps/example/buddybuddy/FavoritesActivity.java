@@ -20,7 +20,7 @@ public class FavoritesActivity extends Activity {
 
 	public String apiURL = "http://dev.m.gatech.edu/d/tisom3/w/pedestrain/c/";
 	
-	Button button;
+	Button buttonAddFavorite;
 	String sessionName;
 	String sessionId;
 	
@@ -31,8 +31,8 @@ public class FavoritesActivity extends Activity {
 		Intent intent = getIntent();
 		sessionName = intent.getExtras().getString("sessionName");
 		sessionId = intent.getExtras().getString("sessionId");
-		button = (Button) findViewById(R.id.button_add_favorite);
-		button.setOnClickListener(new View.OnClickListener() {
+		buttonAddFavorite = (Button) findViewById(R.id.button_add_favorite);
+		buttonAddFavorite.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Thread thread = new Thread(new Runnable(){
 					@Override
@@ -43,16 +43,17 @@ public class FavoritesActivity extends Activity {
                 thread.start();
 			}
 		});
+
 		new GetFavorites().execute(apiURL + "api/favorites");
 
 	}
 
-	
+	/*
 	@Override
 	public void onResume() {
 		new GetFavorites().execute(apiURL + "api/favorites");
 	}
-	
+	*/
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
