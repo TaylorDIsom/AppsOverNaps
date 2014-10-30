@@ -48,12 +48,13 @@ public class FavoritesActivity extends Activity {
 
 	}
 
-	/*
+	
 	@Override
 	public void onResume() {
+		super.onResume();
 		new GetFavorites().execute(apiURL + "api/favorites");
 	}
-	*/
+	
 	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
