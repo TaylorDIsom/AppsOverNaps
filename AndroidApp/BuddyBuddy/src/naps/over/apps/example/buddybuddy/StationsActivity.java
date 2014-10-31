@@ -6,9 +6,13 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -66,16 +70,30 @@ public class StationsActivity extends Activity {
     
     private class GetStations extends AsyncTask<String, String, JSONArray> {
         protected JSONArray doInBackground(String... urls) {
-            JSONParser jParser = new JSONParser();
+            StationsByDistanceRetriever jParser = new StationsByDistanceRetriever();
 
-            JSONArray json = jParser.getJSONFromURL(urls[0]);
+            LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
+            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+
+            float latitude = (float) location.getLatitude();
+            float longitude = (float) location.getLongitude();               
+            
+            JSONArray json = jParser.getJSONFromURL(urls[0], Float.toString(latitude), Float.toString(longitude));
             return json;
         }
 
         
         protected void onPostExecute(JSONArray result) {
         	String[] stations;
+        	
+        	
         	if (result != null) {
+        		
+        		
+
+
+
+                
         		stations = new String[result.length()];
         		JSONObject jsonObject = null;
                 for (int i = 0; i < result.length(); i ++) {
@@ -87,12 +105,14 @@ public class StationsActivity extends Activity {
     				}
                 	try {
                 		stations[i] = jsonObject.getString("Name");
+
+                		
     				} catch (JSONException e) {
     					// TODO Auto-generated catch block
     					e.printStackTrace();
     				}
                 }
-        		
+
         		
         		ArrayAdapter<String> adapter = new ArrayAdapter<String>(StationsActivity.this, android.R.layout.simple_list_item_1,stations);
         		
