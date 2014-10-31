@@ -28,12 +28,11 @@ public final class R {
         public static final int roundedbutton=0x7f020003;
     }
     public static final class id {
-        public static final int ButtonTest=0x7f080008;
-        public static final int action_settings=0x7f08000b;
-        public static final int button1=0x7f080007;
+        public static final int ButtonTest=0x7f080007;
+        public static final int action_settings=0x7f08000a;
         public static final int button_add_favorite=0x7f080003;
-        public static final int button_when=0x7f08000a;
-        public static final int button_where=0x7f080009;
+        public static final int button_when=0x7f080009;
+        public static final int button_where=0x7f080008;
         public static final int container=0x7f080006;
         public static final int editText1=0x7f080001;
         public static final int listView1=0x7f080004;
@@ -56,6 +55,7 @@ public final class R {
         public static final int login=0x7f070002;
         public static final int main=0x7f070003;
         public static final int schedule=0x7f070004;
+        public static final int stations=0x7f070005;
     }
     public static final class string {
         public static final int action_settings=0x7f050002;
