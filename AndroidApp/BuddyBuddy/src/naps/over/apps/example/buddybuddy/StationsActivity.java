@@ -32,7 +32,7 @@ public class StationsActivity extends Activity {
 		sessionName = intent.getExtras().getString("sessionName");
 		sessionId = intent.getExtras().getString("sessionId");
 
-		new GetStations().execute(apiURL + "api/favorites");
+		new GetStations().execute(apiURL + "api/stations");
 
 	}
 
@@ -40,7 +40,7 @@ public class StationsActivity extends Activity {
 	@Override
 	public void onResume() {
 		super.onResume();
-		new GetStations().execute(apiURL + "api/favorites");
+		new GetStations().execute(apiURL + "api/stations");
 	}
 	
 	
