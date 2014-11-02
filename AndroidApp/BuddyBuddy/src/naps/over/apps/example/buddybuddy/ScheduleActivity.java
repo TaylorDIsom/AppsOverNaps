@@ -3,19 +3,31 @@ package naps.over.apps.example.buddybuddy;
 import java.util.Calendar;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
+import android.view.View;
 import android.view.MenuItem;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 public class ScheduleActivity extends Activity {
 
+	String sessionName;
+	String sessionId;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.schedule);
+		
+		Intent intent = getIntent();
+		sessionName = intent.getExtras().getString("sessionName");
+		sessionId = intent.getExtras().getString("sessionId");
+		
 		populateSchedule();
 	}
 
@@ -94,5 +106,14 @@ public class ScheduleActivity extends Activity {
 		
 		ListView listView = (ListView) findViewById(R.id.listView1);
 		listView.setAdapter(adapter);
+		listView.setOnItemClickListener(new OnItemClickListener() {
+            public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
+
+        		Intent intent = new Intent(ScheduleActivity.this, FavoritesActivity.class);
+        		intent.putExtra("sessionName", sessionName);
+        		intent.putExtra("sessionId", sessionId);
+        		startActivity(intent);
+            }
+        });
 	}
 }

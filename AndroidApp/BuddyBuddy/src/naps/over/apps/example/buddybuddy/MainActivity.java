@@ -86,6 +86,8 @@ public class MainActivity extends Activity {
 	
 	public void openSchedule(View view) {
 		Intent intent = new Intent(this, ScheduleActivity.class);
+		intent.putExtra("sessionName", sessionName);
+		intent.putExtra("sessionId", sessionId);
 		startActivity(intent);
 	}
 	

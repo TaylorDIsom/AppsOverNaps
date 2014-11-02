@@ -9,12 +9,15 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class FavoritesActivity extends Activity {
 
@@ -117,6 +120,15 @@ public class FavoritesActivity extends Activity {
         		
         		ListView listView = (ListView) findViewById(R.id.listView1);
         		listView.setAdapter(adapter);
+        		listView.setOnItemClickListener(new OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
+
+                		Intent intent = new Intent(FavoritesActivity.this, StationsActivity.class);
+                		intent.putExtra("sessionName", sessionName);
+                		intent.putExtra("sessionId", sessionId);
+                		startActivity(intent);
+                    }
+                });
         	}
 
 
