@@ -16,9 +16,11 @@ import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemClickListener;
 
 public class StationsActivity extends Activity {
 
@@ -118,10 +120,19 @@ public class StationsActivity extends Activity {
         		
         		ListView listView = (ListView) findViewById(R.id.listView1);
         		listView.setAdapter(adapter);
-        	}
+        		
+        		listView.setOnItemClickListener(new OnItemClickListener() {
+                    public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
+
+                		Intent intent = new Intent(StationsActivity.this, Activity_second.class);
+                		intent.putExtra("sessionName", sessionName);
+                		intent.putExtra("sessionId", sessionId);
+                		startActivity(intent);
+                    }
+        		});
 
 
 
         }
     }
-}
+    }}

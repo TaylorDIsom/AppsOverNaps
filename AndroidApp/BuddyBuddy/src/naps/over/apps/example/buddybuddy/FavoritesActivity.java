@@ -1,12 +1,17 @@
 package naps.over.apps.example.buddybuddy;
 
 
+import java.io.IOException;
+import java.util.List;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -16,8 +21,10 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemClickListener;
+import android.widget.TextView;
 
 public class FavoritesActivity extends Activity {
 
@@ -78,6 +85,8 @@ public class FavoritesActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
+	
+	 
 	public void openAddFavorite() {
 		Intent intent = new Intent(this, AddFavorite.class);
 		intent.putExtra("sessionName", sessionName);
@@ -122,7 +131,7 @@ public class FavoritesActivity extends Activity {
         		listView.setAdapter(adapter);
         		listView.setOnItemClickListener(new OnItemClickListener() {
                     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
-
+                    	
                 		Intent intent = new Intent(FavoritesActivity.this, StationsActivity.class);
                 		intent.putExtra("sessionName", sessionName);
                 		intent.putExtra("sessionId", sessionId);

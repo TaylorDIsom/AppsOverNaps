@@ -15,6 +15,8 @@ import org.apache.http.message.BasicNameValuePair;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.location.Address;
+import android.location.Geocoder;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -22,6 +24,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 
 public class AddFavorite extends Activity {
 
@@ -45,10 +48,19 @@ public class AddFavorite extends Activity {
 					@Override
 					public void run(){
 						addFavoritePost();
+						
+							
+						
 					}
                 });
                 thread.start();
-                finish();
+                //finish();
+                try {
+					geoLocate();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			}
 		});
 	}
@@ -60,6 +72,25 @@ public class AddFavorite extends Activity {
 		return true;
 	}
 
+	 public void geoLocate() throws IOException {
+	        //hideSoftKeyboard(view);
+	        EditText et = (EditText)findViewById(R.id.editText1);
+	        String location = et.getText().toString();
+
+	        Geocoder gc = new Geocoder(this);
+	        List<Address> list = gc.getFromLocationName(location,1);
+	        Address add = list.get(0);
+	       // String locality = add.getLocality();
+
+	        //Toast.makeText(this,locality, Toast.LENGTH_LONG).show();
+	        double lat = add.getLatitude();
+	        double lng = add.getLongitude();
+
+	      TextView  txtLat = (TextView) findViewById(R.id.textViewt);
+	        txtLat.setText("Latitude:" + lat + ", Longitude:" + lng);
+	       // Toast.makeText(this,lat,Toast.LENGTH_LONG).show();
+	       // gotoLocation(lat,lng,10);
+	    }
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		// Handle action bar item clicks here. The action bar will
