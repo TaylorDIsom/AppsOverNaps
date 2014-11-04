@@ -19,4 +19,8 @@
  	<string name="stations_title">Select a Station</string>
  	<string name="title_activity_stations">Stations</string>
  	<string name="stations">Stations</string>
+ 	<string name="board">Board</string>
+ 	<string name="ready">Ready</string>
+ 	<string name="trains_title">Train</string>
+ 
 </resources>
