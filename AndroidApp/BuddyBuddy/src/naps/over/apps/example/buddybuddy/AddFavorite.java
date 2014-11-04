@@ -13,10 +13,18 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.impl.client.DefaultHttpClient;
 import org.apache.http.message.BasicNameValuePair;
 
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapFragment;
+import com.google.android.gms.maps.model.LatLng;
+
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
+import android.location.Location;
+import android.location.LocationManager;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.Menu;
@@ -33,15 +41,25 @@ public class AddFavorite extends Activity {
 	String sessionName;
 	String sessionId;
 	
+	private GoogleMap mMap;
+
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_add_favorite);
+		
+		mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+
+		
 		Intent intent = getIntent();
 		sessionName = intent.getExtras().getString("sessionName");
 		sessionId = intent.getExtras().getString("sessionId");
 		favoriteName = (EditText) findViewById(R.id.editText1);
 		button = (Button) findViewById(R.id.button_add_favorite);
+		
+		geoLocate();
+		
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Thread thread = new Thread(new Runnable(){
@@ -54,13 +72,6 @@ public class AddFavorite extends Activity {
 					}
                 });
                 thread.start();
-                //finish();
-                try {
-					geoLocate();
-				} catch (IOException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
 			}
 		});
 	}
@@ -72,7 +83,8 @@ public class AddFavorite extends Activity {
 		return true;
 	}
 
-	 public void geoLocate() throws IOException {
+	 public void geoLocate() {
+		 /*
 	        //hideSoftKeyboard(view);
 	        EditText et = (EditText)findViewById(R.id.editText1);
 	        String location = et.getText().toString();
@@ -88,8 +100,16 @@ public class AddFavorite extends Activity {
 
 	      TextView  txtLat = (TextView) findViewById(R.id.textViewt);
 	        txtLat.setText("Latitude:" + lat + ", Longitude:" + lng);
+	        */
 	       // Toast.makeText(this,lat,Toast.LENGTH_LONG).show();
 	       // gotoLocation(lat,lng,10);
+		 
+		 LocationManager lm = (LocationManager)getSystemService(Context.LOCATION_SERVICE); 
+		 Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+		 double longitude = location.getLongitude();
+		 double latitude = location.getLatitude();
+		 mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(new LatLng(latitude,longitude), 15));
+		 Log.e(Double.toString(longitude), Double.toString(latitude));
 	    }
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
