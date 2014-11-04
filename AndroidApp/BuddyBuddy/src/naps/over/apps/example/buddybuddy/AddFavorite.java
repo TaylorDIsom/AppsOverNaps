@@ -15,8 +15,11 @@ import org.apache.http.message.BasicNameValuePair;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.GoogleMap.OnMapClickListener;
 import com.google.android.gms.maps.MapFragment;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
 import android.app.Activity;
 import android.content.Context;
@@ -33,6 +36,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class AddFavorite extends Activity {
 
@@ -42,7 +46,10 @@ public class AddFavorite extends Activity {
 	String sessionId;
 	
 	private GoogleMap mMap;
-
+	private Marker favoriteMarker;
+	private String favoriteAddressString;
+	private double favoriteLatitude;
+	private double favoriteLongitude;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,22 +67,62 @@ public class AddFavorite extends Activity {
 		
 		geoLocate();
 		
+		mMap.setOnMapClickListener(new FavoriteMapClickListener());
+		
 		button.setOnClickListener(new View.OnClickListener() {
 			public void onClick(View v) {
 				Thread thread = new Thread(new Runnable(){
 					@Override
 					public void run(){
-						addFavoritePost();
-						
-							
-						
+						EditText favoriteName = (EditText) findViewById(R.id.editText1);
+						if (favoriteMarker != null && !favoriteName.getText().toString().matches("")) {
+							addFavoritePost();
+						}
+
 					}
                 });
                 thread.start();
+                finish();
 			}
 		});
 	}
 
+	public class FavoriteMapClickListener implements OnMapClickListener {
+
+		@Override
+		public void onMapClick(LatLng point) {
+			// TODO Auto-generated method stub
+			mMap = ((MapFragment) getFragmentManager().findFragmentById(R.id.map)).getMap();
+			
+			if (favoriteMarker != null) {
+				favoriteMarker.remove();
+				favoriteMarker = null;
+			}
+
+				favoriteMarker = mMap.addMarker(new MarkerOptions()
+		        .position(point)
+		        .title("New Favorite"));
+			
+		        Geocoder gc = new Geocoder(AddFavorite.this);
+		        List<Address> addressList = null;
+		        try {
+					addressList = gc.getFromLocation(point.latitude, point.longitude, 1);
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+		        if (addressList != null) {
+		        	Address favoriteAddress = addressList.get(0);
+		        	TextView addressTextView = (TextView) findViewById(R.id.addressTextView);
+		        	favoriteAddressString = favoriteAddress.getAddressLine(0);
+		        	addressTextView.setText(favoriteAddressString);
+		        }
+		        favoriteLatitude = point.latitude;
+		        favoriteLongitude = point.longitude;
+		}
+		
+	}
+	
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		// Inflate the menu; this adds items to the action bar if it is present.
@@ -130,10 +177,12 @@ public class AddFavorite extends Activity {
 	    
 	    try {
 	    	 // Add your data
-	        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(3);
+	        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(5);
 	        nameValuePairs.add(new BasicNameValuePair("name", favoriteName.getText().toString()));
-	        nameValuePairs.add(new BasicNameValuePair("address", "placeholderAddress"));
+	        nameValuePairs.add(new BasicNameValuePair("address", favoriteAddressString));
 	        nameValuePairs.add(new BasicNameValuePair("userId", "1"));
+	        nameValuePairs.add(new BasicNameValuePair("latitude", Double.toString(favoriteLatitude)));
+	        nameValuePairs.add(new BasicNameValuePair("longitude", Double.toString(favoriteLongitude)));
 	        httppost.setEntity(new UrlEncodedFormEntity(nameValuePairs));
 	        httppost.setHeader("Cookie", sessionName + "=" + sessionId);
 	        
