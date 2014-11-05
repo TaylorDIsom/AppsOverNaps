@@ -18,18 +18,12 @@ public class MainActivity extends Activity {
 	//this is the master
 	String sessionName;
 	String sessionId;
-	String whereId;
-	String when;
-	String whereIdTemp;
-	String whenTemp;
-
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		Intent intent = getIntent();
 	    
-		
-		
 		//<CAS Login stuff
 		// To get the action of the intent use
 	    String action = intent.getAction();
@@ -42,17 +36,6 @@ public class MainActivity extends Activity {
 	    Uri data = intent.getData();
 	    sessionName = data.getQueryParameter("sessionName");
 	    sessionId = data.getQueryParameter("sessionId");
-	    
-	    whereIdTemp = data.getQueryParameter("whereId");
-	    whenTemp = data.getQueryParameter("when");
-	    
-	    if ( whereIdTemp != null) {
-	    	whereId = whereIdTemp;
-	    }else whereId = "";
-	    if ( whenTemp != null) {
-	    	when = whenTemp;
-	    }else when = "";
-	    
 	    //CAS Login >
 	    
 		setContentView(R.layout.activity_main);
@@ -60,6 +43,9 @@ public class MainActivity extends Activity {
 			getFragmentManager().beginTransaction()
 					.add(R.id.container, new PlaceholderFragment()).commit();
 		}
+		
+
+
 	}
 
 	@Override
@@ -114,8 +100,6 @@ public class MainActivity extends Activity {
 
 	public void openStations(View view) {
 		Intent intent = new Intent(this, StationsActivity.class);
-		intent.putExtra("whereId", whereId);
-		intent.putExtra("when", when);
 		intent.putExtra("sessionName", sessionName);
 		intent.putExtra("sessionId", sessionId);
 		//TODO: decide if when and where values are passed in or retrieved afterwards

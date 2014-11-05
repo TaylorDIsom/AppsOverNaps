@@ -132,8 +132,7 @@ public class FavoritesActivity extends Activity {
         		listView.setOnItemClickListener(new OnItemClickListener() {
                     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
                     	
-                		Intent intent = new Intent(FavoritesActivity.this, MainActivity.class);
-                		//intent.putExtra("whereId", where);
+                		Intent intent = new Intent(FavoritesActivity.this, StationsActivity.class);
                 		intent.putExtra("sessionName", sessionName);
                 		intent.putExtra("sessionId", sessionId);
                 		startActivity(intent);

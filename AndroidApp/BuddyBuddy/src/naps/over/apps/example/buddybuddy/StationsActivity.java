@@ -118,7 +118,9 @@ public class StationsActivity extends Activity {
     					e.printStackTrace();
     				}
                 	try {
-                		stations[i] = jsonObject.getString("Name");                		
+                		stations[i] = jsonObject.getString("Name");
+
+                		
     				} catch (JSONException e) {
     					// TODO Auto-generated catch block
     					e.printStackTrace();
@@ -134,7 +136,7 @@ public class StationsActivity extends Activity {
         		listView.setOnItemClickListener(new OnItemClickListener() {
                     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
 
-                		Intent intent = new Intent(StationsActivity.this, TrainActivity.class);
+                		Intent intent = new Intent(StationsActivity.this, Activity_second.class);
                 		intent.putExtra("sessionName", sessionName);
                 		intent.putExtra("sessionId", sessionId);
                 		startActivity(intent);
@@ -145,5 +147,4 @@ public class StationsActivity extends Activity {
 
         }
     }
-    }
-    }
+    }}
