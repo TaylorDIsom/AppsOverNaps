@@ -109,7 +109,8 @@ public class ScheduleActivity extends Activity {
 		listView.setOnItemClickListener(new OnItemClickListener() {
             public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
 
-        		Intent intent = new Intent(ScheduleActivity.this, FavoritesActivity.class);
+        		Intent intent = new Intent(ScheduleActivity.this, MainActivity.class);
+        		//intent.putExtra("when", when);
         		intent.putExtra("sessionName", sessionName);
         		intent.putExtra("sessionId", sessionId);
         		startActivity(intent);
