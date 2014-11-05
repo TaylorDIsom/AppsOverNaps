@@ -29,8 +29,7 @@ public class StationsActivity extends Activity {
 	
 	String sessionName;
 	String sessionId;
-	Button trainTest;
-	
+	Button trainTest;	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -136,7 +135,7 @@ public class StationsActivity extends Activity {
         		listView.setOnItemClickListener(new OnItemClickListener() {
                     public void onItemClick(AdapterView<?> arg0, View arg1, int arg2, long arg3){
 
-                		Intent intent = new Intent(StationsActivity.this, Activity_second.class);
+                		Intent intent = new Intent(StationsActivity.this, TrainActivity.class);
                 		intent.putExtra("sessionName", sessionName);
                 		intent.putExtra("sessionId", sessionId);
                 		startActivity(intent);
