@@ -91,7 +91,7 @@ public class TrainActivity extends Activity {
 			}
 		}.start();
 		
-		new GetPassengers().execute(apiURL + "api/favorites");
+		new GetPassengers().execute(apiURL + "api/users");
 
 	}
 
@@ -99,7 +99,7 @@ public class TrainActivity extends Activity {
 	@Override
 	public void onResume() {
 		super.onResume();
-		new GetPassengers().execute(apiURL + "api/favorites");
+		new GetPassengers().execute(apiURL + "api/users");
 	}
 	
 	
@@ -154,7 +154,7 @@ public class TrainActivity extends Activity {
     					e.printStackTrace();
     				}
                 	try {
-                		passengers[i] = jsonObject.getString("Name");
+                		passengers[i] = jsonObject.getString("first_name");
     				} catch (JSONException e) {
     					// TODO Auto-generated catch block
     					e.printStackTrace();
