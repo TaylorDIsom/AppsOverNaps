@@ -29,6 +29,8 @@ public class StationsActivity extends Activity {
 	
 	String sessionName;
 	String sessionId;
+	Button trainTest;
+	
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -38,11 +40,21 @@ public class StationsActivity extends Activity {
 		sessionName = intent.getExtras().getString("sessionName");
 		sessionId = intent.getExtras().getString("sessionId");
 
+		trainTest = (Button) findViewById(R.id.button_train);
+		trainTest.setOnClickListener(new View.OnClickListener() {
+			
+			@Override
+			public void onClick(View v) {
+				openTrain();
+				
+			}
+		});
 		new GetStations().execute(apiURL + "api/stations");
 
 	}
 
 	
+
 	@Override
 	public void onResume() {
 		super.onResume();
@@ -69,7 +81,15 @@ public class StationsActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
-    
+
+	public void openTrain() {
+		// TODO Auto-generated method stub
+		Intent intent = new Intent(this, TrainActivity.class);
+		intent.putExtra("sessionName", sessionName);
+		intent.putExtra("sessionId", sessionId);
+		startActivity(intent);
+	}
+
     private class GetStations extends AsyncTask<String, String, JSONArray> {
         protected JSONArray doInBackground(String... urls) {
             StationsByDistanceRetriever jParser = new StationsByDistanceRetriever();
@@ -86,16 +106,8 @@ public class StationsActivity extends Activity {
 
         
         protected void onPostExecute(JSONArray result) {
-        	String[] stations;
-        	
-        	
+        	String[] stations;       	
         	if (result != null) {
-        		
-        		
-
-
-
-                
         		stations = new String[result.length()];
         		JSONObject jsonObject = null;
                 for (int i = 0; i < result.length(); i ++) {

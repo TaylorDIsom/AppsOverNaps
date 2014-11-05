@@ -19,4 +19,9 @@
  	<string name="stations_title">Select a Station</string>
  	<string name="title_activity_stations">Stations</string>
  	<string name="stations">Stations</string>
+ 	<string name="train">Train</string>
+ 	<string name="departure">till departure</string>
+ 	<string name="title_activity_train">Train</string>
+ 	
+ 	
 </resources>

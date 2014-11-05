@@ -50,6 +50,7 @@ public class AddFavorite extends Activity {
 	private String favoriteAddressString;
 	private double favoriteLatitude;
 	private double favoriteLongitude;
+	private String favoriteNameString;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -64,7 +65,7 @@ public class AddFavorite extends Activity {
 		sessionId = intent.getExtras().getString("sessionId");
 		favoriteName = (EditText) findViewById(R.id.editText1);
 		button = (Button) findViewById(R.id.button_add_favorite);
-		
+		favoriteNameString = favoriteName.toString();
 		geoLocate();
 		
 		mMap.setOnMapClickListener(new FavoriteMapClickListener());
@@ -75,10 +76,10 @@ public class AddFavorite extends Activity {
 					@Override
 					public void run(){
 						EditText favoriteName = (EditText) findViewById(R.id.editText1);
-						if (favoriteMarker != null && !favoriteName.getText().toString().matches("")) {
+						if (favoriteMarker != null ) {		
+							if(!favoriteName.getText().toString().equals("")) favoriteNameString = favoriteName.getText().toString();
 							addFavoritePost();
 						}
-
 					}
                 });
                 thread.start();
@@ -116,6 +117,7 @@ public class AddFavorite extends Activity {
 		        	TextView addressTextView = (TextView) findViewById(R.id.addressTextView);
 		        	favoriteAddressString = favoriteAddress.getAddressLine(0);
 		        	addressTextView.setText(favoriteAddressString);
+		        	favoriteNameString = favoriteAddressString;
 		        }
 		        favoriteLatitude = point.latitude;
 		        favoriteLongitude = point.longitude;
@@ -173,12 +175,12 @@ public class AddFavorite extends Activity {
 	public void addFavoritePost() {
 		HttpClient httpclient = new DefaultHttpClient();
 	    HttpPost httppost = new HttpPost("http://dev.m.gatech.edu/d/tisom3/w/pedestrain/c/api/favorites");
-	    Log.e("favoriteName", favoriteName.getText().toString());
+	    Log.e("favoriteName", favoriteNameString);
 	    
 	    try {
 	    	 // Add your data
 	        List<NameValuePair> nameValuePairs = new ArrayList<NameValuePair>(5);
-	        nameValuePairs.add(new BasicNameValuePair("name", favoriteName.getText().toString()));
+	        nameValuePairs.add(new BasicNameValuePair("name", favoriteNameString));
 	        nameValuePairs.add(new BasicNameValuePair("address", favoriteAddressString));
 	        nameValuePairs.add(new BasicNameValuePair("userId", "1"));
 	        nameValuePairs.add(new BasicNameValuePair("latitude", Double.toString(favoriteLatitude)));

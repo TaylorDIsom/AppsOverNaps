@@ -412,18 +412,21 @@ containing a value of this type.
         public static final int roundedbutton=0x7f020023;
     }
     public static final class id {
-        public static final int ButtonTest=0x7f07002b;
-        public static final int action_settings=0x7f07002e;
+        public static final int ButtonTest=0x7f07002e;
+        public static final int action_settings=0x7f070031;
         public static final int addressTextView=0x7f070018;
         public static final int book_now=0x7f070010;
         public static final int button_add_favorite=0x7f070014;
-        public static final int button_when=0x7f07002d;
-        public static final int button_where=0x7f07002c;
+        public static final int button_stations=0x7f07002c;
+        public static final int button_train=0x7f07002b;
+        public static final int button_when=0x7f070030;
+        public static final int button_where=0x7f07002f;
         public static final int buyButton=0x7f07000a;
         public static final int buy_now=0x7f07000f;
         public static final int buy_with_google=0x7f07000e;
         public static final int classic=0x7f070011;
         public static final int container=0x7f07001d;
+        public static final int countdown=0x7f07002d;
         public static final int editText1=0x7f070016;
         public static final int grayscale=0x7f070012;
         public static final int holo_dark=0x7f070005;
@@ -470,8 +473,9 @@ containing a value of this type.
         public static final int activity_main=0x7f030003;
         public static final int activity_second=0x7f030004;
         public static final int activity_stations=0x7f030005;
-        public static final int fragment_main=0x7f030006;
-        public static final int schedule=0x7f030007;
+        public static final int activity_train=0x7f030006;
+        public static final int fragment_main=0x7f030007;
+        public static final int schedule=0x7f030008;
     }
     public static final class menu {
         public static final int add_favorite=0x7f0a0000;
@@ -480,6 +484,7 @@ containing a value of this type.
         public static final int main=0x7f0a0003;
         public static final int schedule=0x7f0a0004;
         public static final int stations=0x7f0a0005;
+        public static final int train=0x7f0a0006;
     }
     public static final class string {
         public static final int accept=0x7f050002;
@@ -588,6 +593,7 @@ containing a value of this type.
         public static final int create_calendar_message=0x7f050005;
         public static final int create_calendar_title=0x7f050004;
         public static final int decline=0x7f050003;
+        public static final int departure=0x7f050036;
         public static final int favorite_name=0x7f05002d;
         public static final int favorite_title=0x7f05002a;
         public static final int go=0x7f05002f;
@@ -603,6 +609,8 @@ containing a value of this type.
         public static final int title_activity_favorites=0x7f050029;
         public static final int title_activity_schedule=0x7f050027;
         public static final int title_activity_stations=0x7f050033;
+        public static final int title_activity_train=0x7f050037;
+        public static final int train=0x7f050035;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */

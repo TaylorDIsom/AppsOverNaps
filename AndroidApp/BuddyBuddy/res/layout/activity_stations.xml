@@ -13,6 +13,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView1"
+        android:layout_above="@+id/button_train"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="21dp"
         >
@@ -27,7 +28,14 @@
         android:layout_centerHorizontal="true"
         android:text="@string/stations_title" />
 
-   
-
+    <Button
+        android:id="@+id/button_train"
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:text="@string/train" />
 
 </RelativeLayout>

@@ -103,17 +103,9 @@ public class MainActivity extends Activity {
 		intent.putExtra("sessionName", sessionName);
 		intent.putExtra("sessionId", sessionId);
 		//TODO: decide if when and where values are passed in or retrieved afterwards
-		intent.putExtra("when", "lorem ipsum");
-		intent.putExtra("where", "lorem ipsum");
+		//intent.putExtra("when", "lorem ipsum");
+		//intent.putExtra("where", "lorem ipsum");
 		startActivity(intent);
 	}
 	
-	public void opensecond(View view) {
-		Intent intent = new Intent(this, Activity_second.class);
-		intent.putExtra("sessionName", sessionName);
-		intent.putExtra("sessionId", sessionId);
-		//TODO: decide if when and where values are passed in or retrieved afterwards
-		intent.putExtra("listview1", "lorem ipsum");
-		startActivity(intent);
-	}
 }

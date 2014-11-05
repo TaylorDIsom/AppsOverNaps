@@ -44,7 +44,6 @@
         android:layout_height="wrap_content"
         android:text="@string/where"
         android:id="@+id/button_where"
-
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
