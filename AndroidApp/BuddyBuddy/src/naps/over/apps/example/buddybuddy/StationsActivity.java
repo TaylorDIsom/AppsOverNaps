@@ -30,6 +30,7 @@ public class StationsActivity extends Activity {
 	String sessionName;
 	String sessionId;
 	Button trainTest;	
+	Button buttonAddStation;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +47,20 @@ public class StationsActivity extends Activity {
 			public void onClick(View v) {
 				openTrain();
 				
+			}
+		});
+		
+		buttonAddStation = (Button) findViewById(R.id.button_add_station);
+		buttonAddStation.setOnClickListener(new View.OnClickListener() {
+			public void onClick(View v) {
+				Thread thread = new Thread(new Runnable(){
+					@Override
+					public void run(){
+						openAddStation();
+					}
+
+                });
+                thread.start();
 			}
 		});
 		new GetStations().execute(apiURL + "api/stations");
@@ -80,6 +95,15 @@ public class StationsActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 
+
+	public void openAddStation() {
+		Intent intent = new Intent(this, AddStation.class);
+		intent.putExtra("sessionName", sessionName);
+		intent.putExtra("sessionId", sessionId);
+		startActivity(intent);
+		
+	}
+	 
 
 	public void openTrain() {
 		// TODO Auto-generated method stub

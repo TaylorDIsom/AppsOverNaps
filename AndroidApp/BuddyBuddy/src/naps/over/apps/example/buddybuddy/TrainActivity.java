@@ -36,6 +36,7 @@ public class TrainActivity extends Activity {
 	String sessionName;
 	String sessionId;
 	TextView countdown;
+	Button buttonAddStation;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -59,6 +60,7 @@ public class TrainActivity extends Activity {
                 thread.start();
 			}
 		});
+
 
 		//15 minute countdown timer
 		//TODO: sync countdown with current time
@@ -122,8 +124,7 @@ public class TrainActivity extends Activity {
 		return super.onOptionsItemSelected(item);
 	}
 	
-	
-	 
+
 	public void openStations() {
 		Intent intent = new Intent(this, StationsActivity.class);
 		intent.putExtra("sessionName", sessionName);

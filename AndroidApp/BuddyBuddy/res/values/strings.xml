@@ -12,6 +12,7 @@
     <string name="add_favorite">Add Favorite</string>
     <string name="title_activity_add_favorite">Add a Favorite Location</string>
     <string name="favorite_name">Location Name</string>
+    <string name="station_name">Station Name</string>
  	<string name="login_button_text">Login</string>
  	<string name="go">GO</string>
  	<string name="when">When</string>
@@ -22,6 +23,7 @@
  	<string name="train">Train</string>
  	<string name="departure">till departure</string>
  	<string name="title_activity_train">Train</string>
- 	
- 	
+ 	<string name="add_station">Add Station</string>
+	<string name="title_activity_add_station">Add a Station</string>
+ 	<string name="address">Address</string>
 </resources>

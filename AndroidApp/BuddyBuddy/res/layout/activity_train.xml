@@ -27,15 +27,6 @@
 
     </ListView>
 
-   
-    <Button
-        android:id="@+id/button_stations"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:text="@string/title_activity_stations" />
-
     <TextView
         android:id="@+id/countdown"
         android:layout_width="wrap_content"
@@ -45,5 +36,15 @@
         android:layout_below="@+id/textView1"
         android:ems="15"
         android:hint="@string/departure" />
+
+
+    <Button
+        android:id="@+id/button_stations"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:text="@string/title_activity_stations" />
 
 </RelativeLayout>

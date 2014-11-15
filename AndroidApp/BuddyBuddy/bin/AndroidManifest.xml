@@ -73,7 +73,10 @@
             </intent-filter>
         </activity>
         <activity android:name="Activity_second"></activity>
-        
+        <activity
+            android:name=".AddStation"
+            android:label="@string/title_activity_add_station" >
+        </activity>
         <meta-data
             android:name="com.google.android.maps.v2.API_KEY"
             android:value="insertkeyhere" />

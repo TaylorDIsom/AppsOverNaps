@@ -412,55 +412,56 @@ containing a value of this type.
         public static final int roundedbutton=0x7f020023;
     }
     public static final class id {
-        public static final int ButtonTest=0x7f07002e;
-        public static final int action_settings=0x7f070031;
+        public static final int ButtonTest=0x7f07002f;
+        public static final int action_settings=0x7f070032;
         public static final int addressTextView=0x7f070018;
         public static final int book_now=0x7f070010;
         public static final int button_add_favorite=0x7f070014;
-        public static final int button_stations=0x7f07002c;
-        public static final int button_train=0x7f07002b;
-        public static final int button_when=0x7f070030;
-        public static final int button_where=0x7f07002f;
+        public static final int button_add_station=0x7f07001b;
+        public static final int button_stations=0x7f07002d;
+        public static final int button_train=0x7f07002c;
+        public static final int button_when=0x7f070031;
+        public static final int button_where=0x7f070030;
         public static final int buyButton=0x7f07000a;
         public static final int buy_now=0x7f07000f;
         public static final int buy_with_google=0x7f07000e;
         public static final int classic=0x7f070011;
-        public static final int container=0x7f07001d;
-        public static final int countdown=0x7f07002d;
+        public static final int container=0x7f07001e;
+        public static final int countdown=0x7f07002e;
         public static final int editText1=0x7f070016;
         public static final int grayscale=0x7f070012;
         public static final int holo_dark=0x7f070005;
         public static final int holo_light=0x7f070006;
         public static final int hybrid=0x7f070004;
-        public static final int listView1=0x7f07001b;
-        public static final int login_button=0x7f07001c;
+        public static final int listView1=0x7f07001c;
+        public static final int login_button=0x7f07001d;
         public static final int map=0x7f07001a;
         public static final int match_parent=0x7f07000c;
         public static final int monochrome=0x7f070013;
         public static final int none=0x7f070000;
         public static final int normal=0x7f070001;
         public static final int production=0x7f070007;
-        public static final int radioButton=0x7f07001f;
+        public static final int radioButton=0x7f070020;
         public static final int relativeLayout1=0x7f070019;
         public static final int sandbox=0x7f070008;
         public static final int satellite=0x7f070002;
         public static final int selectionDetails=0x7f07000b;
         public static final int strict_sandbox=0x7f070009;
         public static final int terrain=0x7f070003;
-        public static final int textView=0x7f07001e;
+        public static final int textView=0x7f07001f;
         public static final int textView1=0x7f070017;
-        public static final int textView10=0x7f070027;
-        public static final int textView11=0x7f070028;
-        public static final int textView12=0x7f070029;
-        public static final int textView13=0x7f07002a;
+        public static final int textView10=0x7f070028;
+        public static final int textView11=0x7f070029;
+        public static final int textView12=0x7f07002a;
+        public static final int textView13=0x7f07002b;
         public static final int textView2=0x7f070015;
-        public static final int textView3=0x7f070020;
-        public static final int textView4=0x7f070021;
-        public static final int textView5=0x7f070022;
-        public static final int textView6=0x7f070023;
-        public static final int textView7=0x7f070024;
-        public static final int textView8=0x7f070025;
-        public static final int textView9=0x7f070026;
+        public static final int textView3=0x7f070021;
+        public static final int textView4=0x7f070022;
+        public static final int textView5=0x7f070023;
+        public static final int textView6=0x7f070024;
+        public static final int textView7=0x7f070025;
+        public static final int textView8=0x7f070026;
+        public static final int textView9=0x7f070027;
         public static final int wrap_content=0x7f07000d;
     }
     public static final class integer {
@@ -468,28 +469,32 @@ containing a value of this type.
     }
     public static final class layout {
         public static final int activity_add_favorite=0x7f030000;
-        public static final int activity_favorites=0x7f030001;
-        public static final int activity_login=0x7f030002;
-        public static final int activity_main=0x7f030003;
-        public static final int activity_second=0x7f030004;
-        public static final int activity_stations=0x7f030005;
-        public static final int activity_train=0x7f030006;
-        public static final int fragment_main=0x7f030007;
-        public static final int schedule=0x7f030008;
+        public static final int activity_add_station=0x7f030001;
+        public static final int activity_favorites=0x7f030002;
+        public static final int activity_login=0x7f030003;
+        public static final int activity_main=0x7f030004;
+        public static final int activity_second=0x7f030005;
+        public static final int activity_stations=0x7f030006;
+        public static final int activity_train=0x7f030007;
+        public static final int fragment_main=0x7f030008;
+        public static final int schedule=0x7f030009;
     }
     public static final class menu {
         public static final int add_favorite=0x7f0a0000;
-        public static final int favorites=0x7f0a0001;
-        public static final int login=0x7f0a0002;
-        public static final int main=0x7f0a0003;
-        public static final int schedule=0x7f0a0004;
-        public static final int stations=0x7f0a0005;
-        public static final int train=0x7f0a0006;
+        public static final int add_station=0x7f0a0001;
+        public static final int favorites=0x7f0a0002;
+        public static final int login=0x7f0a0003;
+        public static final int main=0x7f0a0004;
+        public static final int schedule=0x7f0a0005;
+        public static final int stations=0x7f0a0006;
+        public static final int train=0x7f0a0007;
     }
     public static final class string {
         public static final int accept=0x7f050002;
         public static final int action_settings=0x7f050025;
         public static final int add_favorite=0x7f05002b;
+        public static final int add_station=0x7f050039;
+        public static final int address=0x7f05003b;
         public static final int app_name=0x7f050023;
         /**   Text for notification shown when the Android Wear apps needs to be updated. Only shown on the wearable. [CHAR LIMIT=NONE] 
          */
@@ -593,30 +598,32 @@ containing a value of this type.
         public static final int create_calendar_message=0x7f050005;
         public static final int create_calendar_title=0x7f050004;
         public static final int decline=0x7f050003;
-        public static final int departure=0x7f050036;
+        public static final int departure=0x7f050037;
         public static final int favorite_name=0x7f05002d;
         public static final int favorite_title=0x7f05002a;
-        public static final int go=0x7f05002f;
+        public static final int go=0x7f050030;
         public static final int hello_world=0x7f050024;
-        public static final int login_button_text=0x7f05002e;
+        public static final int login_button_text=0x7f05002f;
         public static final int schedule_title=0x7f050028;
-        public static final int stations=0x7f050034;
-        public static final int stations_title=0x7f050032;
+        public static final int station_name=0x7f05002e;
+        public static final int stations=0x7f050035;
+        public static final int stations_title=0x7f050033;
         public static final int store_picture_message=0x7f050001;
         public static final int store_picture_title=0x7f050000;
         public static final int take_home_button=0x7f050026;
         public static final int title_activity_add_favorite=0x7f05002c;
+        public static final int title_activity_add_station=0x7f05003a;
         public static final int title_activity_favorites=0x7f050029;
         public static final int title_activity_schedule=0x7f050027;
-        public static final int title_activity_stations=0x7f050033;
-        public static final int title_activity_train=0x7f050037;
-        public static final int train=0x7f050035;
+        public static final int title_activity_stations=0x7f050034;
+        public static final int title_activity_train=0x7f050038;
+        public static final int train=0x7f050036;
         /**  Text on a placeholder buy button when Google Play services is not
          available or up-to-date 
          */
         public static final int wallet_buy_button_place_holder=0x7f050022;
-        public static final int when=0x7f050030;
-        public static final int where=0x7f050031;
+        public static final int when=0x7f050031;
+        public static final int where=0x7f050032;
     }
     public static final class style {
         /** 
